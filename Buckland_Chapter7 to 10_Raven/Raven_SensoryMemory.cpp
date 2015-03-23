@@ -139,7 +139,7 @@ void Raven_SensoryMemory::UpdateVision()
 //
 //  returns a list of the bots that have been sensed recently
 //-----------------------------------------------------------------------------
-std::list<Raven_Bot*> 
+std::list<Raven_Bot*> //NEW: Retornar apenas time adversario
 Raven_SensoryMemory::GetListOfRecentlySensedOpponents()const
 {
   //this will store all the opponents the bot can remember
@@ -150,8 +150,10 @@ Raven_SensoryMemory::GetListOfRecentlySensedOpponents()const
   MemoryMap::const_iterator curRecord = m_MemoryMap.begin();
   for (curRecord; curRecord!=m_MemoryMap.end(); ++curRecord)
   {
+	int team = (*curRecord->first).getTeam();
     //if this bot has been updated in the memory recently, add to list
-    if ( (CurrentTime - curRecord->second.fTimeLastSensed) <= m_dMemorySpan)
+    if (( (CurrentTime - curRecord->second.fTimeLastSensed) <= m_dMemorySpan)&&
+		(team != (*m_pOwner).getTeam()))
     {
       opponents.push_back(curRecord->first);
     }

@@ -51,9 +51,9 @@ Raven_Bot::Raven_Bot(Raven_Game* world,Vector2D pos, int team):
 {
   SetEntityType(type_bot);
 
-  SetUpVertexBuffer();
-  
   Team = team;
+
+  SetUpVertexBuffer();
 
   //a bot starts off facing in the direction it is heading
   m_vFacing = m_vHeading;
@@ -488,7 +488,8 @@ void Raven_Bot::Render()
 
   if (isDead() || isSpawning()) return;
   
-  gdi->BluePen();
+  if (Team == 1){gdi->RedPen();}
+  if (Team == 2){gdi->BluePen();}
   
   m_vecBotVBTrans = WorldTransform(m_vecBotVB,
                                    Pos(),
@@ -544,12 +545,24 @@ void Raven_Bot::Render()
 void Raven_Bot::SetUpVertexBuffer()
 {
   //setup the vertex buffers and calculate the bounding radius
-  const int NumBotVerts = 4;
-  const Vector2D bot[NumBotVerts] = {Vector2D(-3, 8),
-                                     Vector2D(3,10),
-                                     Vector2D(3,-10),
-                                     Vector2D(-3,-8)};
-
+  const int NumBotVerts = 5;
+  Vector2D bot[NumBotVerts];
+  if (Team == 1)
+  {
+	  bot[0] = Vector2D(-10, 3),//RightShoulder
+	  bot[1] = Vector2D(3,10),//RightArm
+	  bot[2] = Vector2D(3,-10),//LeftArm
+	  bot[3] = Vector2D(-10,-3),//LeftShoulder
+	  bot[4] = Vector2D(0,0);//Center
+  }
+  if (Team == 2)
+  {
+	  bot[0] = Vector2D(-5, 12),//RightShoulder
+	  bot[1] = Vector2D(3,8),//RightArm
+	  bot[2] = Vector2D(3,-8),//LeftArm
+	  bot[3] = Vector2D(-5,-12),//LeftShoulder
+	  bot[4] = Vector2D(0,0);//Center
+  }
   m_dBoundingRadius = 0.0;
   double scale = script->GetDouble("Bot_Scale");
   

@@ -27,6 +27,7 @@ Bolt::Bolt(Raven_Bot* shooter, Vector2D target):
                          script->GetDouble("Bolt_MaxForce"))
 {
    assert (target != Vector2D());
+   Shooter = shooter;
 }
 
 
@@ -63,11 +64,12 @@ void Bolt::Update()
 
       //send a message to the bot to let it know it's been hit, and who the
       //shot came from
+	  if (hit->getTeam() != Shooter->getTeam()){
       Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
                               m_iShooterID,
                               hit->ID(),
                               Msg_TakeThatMF,
-                              (void*)&m_iDamageInflicted);
+							  (void*)&m_iDamageInflicted);}
     }
 
     //test for impact with a wall
@@ -93,6 +95,8 @@ void Bolt::Update()
 //-----------------------------------------------------------------------------
 void Bolt::Render()
 {
-  gdi->ThickGreenPen();
-  gdi->Line(Pos(), Pos()-Velocity());
+  int Shooterteam = Shooter->getTeam();
+  if (Shooterteam == 1) {gdi->ThickRedPen();};  
+  if (Shooterteam == 2) {gdi->ThickBluePen();};  
+  gdi->Line(Pos()-Velocity(), Pos());
 }

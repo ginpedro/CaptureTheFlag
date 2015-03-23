@@ -30,14 +30,14 @@ void Trigger_Flagspot::Render()
 {
   if (isActive())
   {
-    gdi->GreenPen();
+    gdi->BlackPen();
 	if (m_iOwnerTeam == 1) {gdi->RedBrush();}
 	if (m_iOwnerTeam == 2) {gdi->BlueBrush();}
     const int sz = 5;
     gdi->Rect(Pos().x-sz, Pos().y-sz, Pos().x+sz+1, Pos().y+sz+1);
-    gdi->WhitePen();
-    gdi->Line(Pos().x, Pos().y-sz, Pos().x, Pos().y+sz+1);
-    gdi->Line(Pos().x-sz, Pos().y, Pos().x+sz+1, Pos().y);
+    gdi->BlackPen();
+    gdi->Line(Pos().x-sz, Pos().y+sz, Pos().x-sz, Pos().y+sz+sz);
+    //gdi->Line(Pos().x-sz, Pos().y, Pos().x+sz+1, Pos().y);
   }
 }
 

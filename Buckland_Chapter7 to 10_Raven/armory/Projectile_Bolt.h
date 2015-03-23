@@ -25,6 +25,8 @@ private:
   
 public:
 
+  Raven_Bot* Shooter;
+
   Bolt(Raven_Bot* shooter, Vector2D target);
   
   void Render();
