@@ -40,6 +40,9 @@ private:
 
 private:
 
+	//NEW: TEAMWORK IS OP
+	int Team;
+
   //alive, dead or spawning?
   Status                             m_Status;
 
@@ -125,7 +128,7 @@ private:
 
 public:
   
-  Raven_Bot(Raven_Game* world, Vector2D pos);
+  Raven_Bot(Raven_Game* world, Vector2D pos, int team);
   virtual ~Raven_Bot();
 
   //the usual suspects
@@ -139,6 +142,8 @@ public:
   //position. Returns false if not facing at the target.
   bool          RotateFacingTowardPosition(Vector2D target);
  
+  int			getTeam() {return Team;}
+
   //methods for accessing attribute data
   int           Health()const{return m_iHealth;}
   int           MaxHealth()const{return m_iMaxHealth;}

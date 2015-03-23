@@ -11,6 +11,7 @@
 #include "triggers/Trigger_WeaponGiver.h"
 #include "triggers/Trigger_OnButtonSendMsg.h"
 #include "triggers/Trigger_SoundNotify.h"
+#include "Trigger_Flagspot.h"
 
 #include "Raven_UserOptions.h"
 
@@ -163,6 +164,21 @@ void Raven_Map::AddWeapon_Giver(int type_of_weapon, std::ifstream& in)
   EntityMgr->RegisterEntity(wg);
 }
 
+//NEW: Add flag
+void Raven_Map::AddFlag(std::ifstream& in)
+{
+  Trigger_Flagspot* fs = new Trigger_Flagspot(in);
+
+  m_TriggerSystem.Register(fs);
+
+  //let the corresponding navgraph node point to this object
+  NavGraph::NodeType& node = m_pNavGraph->GetNode(fs->GraphNodeIndex());
+
+  node.SetExtraInfo(fs);
+
+  //register the entity 
+  EntityMgr->RegisterEntity(fs);
+}
 
 //------------------------- LoadMap ------------------------------------
 //
@@ -276,6 +292,10 @@ bool Raven_Map::LoadMap(const std::string& filename)
    case type_rocket_launcher:
      
        AddWeapon_Giver(type_rocket_launcher, in); break;
+
+   case type_flag:
+	   //NEW mudar aqui
+	   AddFlag(in); break;
 
     default:
       

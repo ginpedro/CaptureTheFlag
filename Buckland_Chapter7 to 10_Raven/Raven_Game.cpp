@@ -244,13 +244,13 @@ bool Raven_Game::AttemptToAddBot(Raven_Bot* pBot)
 //
 //  Adds a bot and switches on the default steering behavior
 //-----------------------------------------------------------------------------
-void Raven_Game::AddBots(unsigned int NumBotsToAdd)
+void Raven_Game::AddBots(unsigned int NumBotsToAdd, int team)
 { 
   while (NumBotsToAdd--)
   {
     //create a bot. (its position is irrelevant at this point because it will
     //not be rendered until it is spawned)
-    Raven_Bot* rb = new Raven_Bot(this, Vector2D());
+    Raven_Bot* rb = new Raven_Bot(this, Vector2D(),team);
 
     //switch the default steering behaviors on
     rb->GetSteering()->WallAvoidanceOn();
@@ -396,8 +396,8 @@ bool Raven_Game::LoadMap(const std::string& filename)
   //load the new map data
   if (m_pMap->LoadMap(filename))
   { 
-    AddBots(script->GetInt("NumBots"));
-  
+    AddBots(script->GetInt("NumBots1"),1);
+    AddBots(script->GetInt("NumBots2"),2);
     return true;
   }
 

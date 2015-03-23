@@ -23,7 +23,7 @@
 #include "Debug/DebugConsole.h"
 
 //-------------------------- ctor ---------------------------------------------
-Raven_Bot::Raven_Bot(Raven_Game* world,Vector2D pos):
+Raven_Bot::Raven_Bot(Raven_Game* world,Vector2D pos, int team):
 
   MovingEntity(pos,
                script->GetDouble("Bot_Scale"),
@@ -53,6 +53,8 @@ Raven_Bot::Raven_Bot(Raven_Game* world,Vector2D pos):
 
   SetUpVertexBuffer();
   
+  Team = team;
+
   //a bot starts off facing in the direction it is heading
   m_vFacing = m_vHeading;
 
@@ -497,7 +499,8 @@ void Raven_Bot::Render()
   gdi->ClosedShape(m_vecBotVBTrans);
   
   //draw the head
-  gdi->BrownBrush();
+  if (Team == 1){gdi->RedBrush();}
+  if (Team == 2){gdi->BlueBrush();}
   gdi->Circle(Pos(), 6.0 * Scale().x);
 
 

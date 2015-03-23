@@ -1,6 +1,6 @@
-NavGraph for maps/Raven_DM1.map loaded okay
-Average edge length is 23.7036
-Neighborhood range set to 24.7036
+NavGraph for maps/capturethehp.map loaded okay
+Average edge length is 23.9268
+Neighborhood range set to 24.9268
 Partitioning navgraph nodes...
 Loading map...
 Creating a Wall
@@ -15,6 +15,16 @@ Creating a Wall
 Creating a Wall
 Creating a Wall
 Creating a Wall
+Creating a sliding_door
+Creating a door_trigger
+Creating a door_trigger
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a sliding_door
+Creating a door_trigger
+Creating a door_trigger
 Creating a Wall
 Creating a Wall
 Creating a Wall
@@ -23,8 +33,12 @@ Creating a Wall
 Creating a Wall
 Creating a Wall
 Creating a Wall
-Creating a Wall
-Creating a Wall
+Creating a sliding_door
+Creating a door_trigger
+Creating a door_trigger
+Creating a sliding_door
+Creating a door_trigger
+Creating a door_trigger
 Creating a Wall
 Creating a Wall
 Creating a Wall
@@ -63,16 +77,15 @@ Creating a Wall
 Creating a Wall
 Creating a Spawn Point
 Creating a Spawn Point
-Creating a Spawn Point
-Creating a Health
-Creating a Health
-Creating a Health
-Creating a rocket_launcher
-Creating a Railgun
-Creating a shotgun
-Creating a shotgun
-Creating a rocket_launcher
-maps/Raven_DM1.map loaded okay
-deleting raven bot (id = 401)
-deleting raven bot (id = 402)
-deleting raven bot (id = 403)
+Creating a UNKNOWN OBJECT TYPE
+Creating a UNKNOWN OBJECT TYPE
+maps/capturethehp.map loaded okay
+BOT 1183 IS STUCK!!
+deleting raven bot (id = 1181)
+deleting raven bot (id = 1182)
+deleting raven bot (id = 1183)
+deleting raven bot (id = 1184)
+deleting raven bot (id = 1185)
+deleting raven bot (id = 1186)
+deleting raven bot (id = 1187)
+deleting raven bot (id = 1188)

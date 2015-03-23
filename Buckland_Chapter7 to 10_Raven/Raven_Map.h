@@ -84,7 +84,8 @@ private:
   void AddWeapon_Giver(int type_of_weapon, std::ifstream& in);
   void AddDoor(std::ifstream& in);
   void AddDoorTrigger(std::ifstream& in);
-
+  //NEW
+  void AddFlag(std::ifstream& in);
   void Clear();
   
 public:

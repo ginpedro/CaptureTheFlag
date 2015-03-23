@@ -77,6 +77,9 @@
     <Filter Include="Common">
       <UniqueIdentifier>{f3f5ab42-49d8-4348-aa63-66655abd9be1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\Triggers\CTF">
+      <UniqueIdentifier>{70da4580-be7b-45ea-bf18-d4fa005328fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -267,6 +270,9 @@
     </ClCompile>
     <ClCompile Include="..\Common\misc\WindowUtils.cpp">
       <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Trigger_Flagspot.cpp">
+      <Filter>AI\Triggers\CTF</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -605,6 +611,9 @@
     </ClInclude>
     <ClInclude Include="..\Common\misc\WindowUtils.h">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Trigger_Flagspot.h">
+      <Filter>AI\Triggers\CTF</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
