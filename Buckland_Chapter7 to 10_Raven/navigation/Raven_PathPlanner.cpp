@@ -14,6 +14,7 @@
 #include "Messaging/MessageDispatcher.h"
 #include "graph/NodeTypeEnumerations.h"
 
+#include "Graph/GraphAlgorithms.h"
 
 #include "Debug/DebugConsole.h"
 //#define SHOW_NAVINFO
@@ -568,6 +569,38 @@ bool Raven_PathPlanner::RequestPathToItemSecure(unsigned int ItemType, double Ma
     return false; 
   }
 
+  /*Graph_SearchDijkstra<Raven_Map::NavGraph>* dij = new Graph_SearchDijkstra<Raven_Map::NavGraph>(m_NavGraph,
+																								 ClosestNodeToBot, 
+																							     ItemType);
+
+  std::list<int> l = dij->GetPathToTarget();
+
+  std::list<int>::const_reverse_iterator last = l.rbegin();
+
+  int l1 = -1;
+  int l2 = -1;
+
+  if (l.rend() != last)
+  {
+	  l2 = *last;
+	  ++last;
+  }
+  if (l.rend() != last) {
+	  l1 = *last;
+	  ++last;
+  }
+
+  double d = Vec2DDistance(m_NavGraph.GetNode(l1).Pos(), m_NavGraph.GetNode(l2).Pos());
+
+  double sqrt2 = std::sqrt(2.);
+
+  int itempos = l2;
+
+  if (d > sqrt2) {
+	  itempos = l1;
+  }*/
+
+  
   //create an instance of the search algorithm
   typedef FindSecureActiveTrigger<Trigger<Raven_Bot>,Raven_Map::NavGraph> t_con; 
   //typedef Graph_SearchDijkstras_TS<Raven_Map::NavGraph, t_con> DijSearch;
@@ -578,8 +611,17 @@ bool Raven_PathPlanner::RequestPathToItemSecure(unsigned int ItemType, double Ma
                                    ItemType,
 								   new t_con(m_pOwner,MaxDistFromEnemy));
 
+  /*typedef Graph_SearchAStar_TS<Raven_Map::NavGraph> AStarAvoid;
+   
+  m_pCurrentSearch = new AStarAvoid(m_NavGraph,
+                               ClosestNodeToBot,
+                               itempos,
+							   new Heuristic_Avoid<Raven_Map::NavGraph>(m_pOwner, MaxDistFromEnemy));*/
+
   //register the search with the path manager
   m_pOwner->GetWorld()->GetPathManager()->Register(this);
+  
+  //delete dij;
 
   return true;
 }

@@ -162,12 +162,7 @@ public:
 					posB = (*curBot)->Pos();
 					d = Vec2DDistance(posA, posB);
 
-					if (runner->GetWorld()->isLOSOkay(posA, posB)) {
-						E += dmaxSq / (d*d);
-					}
-					else if (d < dmax) {
-						E += dmax * (dmax-d) / (d*d);
-					}
+					E += dmaxSq / (d*d);
 				}
 			}
 			if (q == 0) {bSatisfied = true;}
