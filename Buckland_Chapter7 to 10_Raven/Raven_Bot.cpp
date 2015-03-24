@@ -549,18 +549,18 @@ void Raven_Bot::SetUpVertexBuffer()
   Vector2D bot[NumBotVerts];
   if (Team == 1)
   {
-	  bot[0] = Vector2D(-10, 3),//RightShoulder
-	  bot[1] = Vector2D(3,10),//RightArm
-	  bot[2] = Vector2D(3,-10),//LeftArm
-	  bot[3] = Vector2D(-10,-3),//LeftShoulder
+	  bot[0] = Vector2D(-10, 3);//RightShoulder
+	  bot[1] = Vector2D(3,10);//RightArm
+	  bot[2] = Vector2D(3,-10);//LeftArm
+	  bot[3] = Vector2D(-10,-3);//LeftShoulder
 	  bot[4] = Vector2D(0,0);//Center
   }
   if (Team == 2)
   {
-	  bot[0] = Vector2D(-5, 12),//RightShoulder
-	  bot[1] = Vector2D(3,8),//RightArm
-	  bot[2] = Vector2D(3,-8),//LeftArm
-	  bot[3] = Vector2D(-5,-12),//LeftShoulder
+	  bot[0] = Vector2D(-5, 12);//RightShoulder
+	  bot[1] = Vector2D(3,8);//RightArm
+	  bot[2] = Vector2D(3,-8);//LeftArm
+	  bot[3] = Vector2D(-5,-12);//LeftShoulder
 	  bot[4] = Vector2D(0,0);//Center
   }
   m_dBoundingRadius = 0.0;

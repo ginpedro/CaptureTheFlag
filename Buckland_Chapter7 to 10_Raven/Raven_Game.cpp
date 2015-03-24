@@ -164,7 +164,8 @@ void Raven_Game::Update()
       m_pGraveMarkers->AddGrave((*curBot)->Pos());
 
       //change its status to spawning
-      (*curBot)->SetSpawning();
+	  //NEW: Os bots nao dao respawn
+      //(*curBot)->SetSpawning();
     }
 
     //if this bot is alive update it.
@@ -213,8 +214,9 @@ bool Raven_Game::AttemptToAddBot(Raven_Bot* pBot)
   while (--attempts >= 0)
   { 
     //select a random spawn point
+	  //NEW: nao selecionar spawn random
     Vector2D pos = m_pMap->GetRandomSpawnPoint();
-
+	  
     //check to see if it's occupied
     std::list<Raven_Bot*>::const_iterator curBot = m_Bots.begin();
 
@@ -222,6 +224,7 @@ bool Raven_Game::AttemptToAddBot(Raven_Bot* pBot)
 
     for (curBot; curBot != m_Bots.end(); ++curBot)
     {
+	  Vector2D pos = m_pMap->GetTeamSpawnpoint((*curBot)->getTeam());
       //if the spawn point is unoccupied spawn a bot
       if (Vec2DDistance(pos, (*curBot)->Pos()) < (*curBot)->BRadius())
       {
@@ -230,7 +233,8 @@ bool Raven_Game::AttemptToAddBot(Raven_Bot* pBot)
     }
 
     if (bAvailable)
-    {  
+    { 
+	  Vector2D pos = m_pMap->GetTeamSpawnpoint(pBot->getTeam());
       pBot->Spawn(pos);
 
       return true;   

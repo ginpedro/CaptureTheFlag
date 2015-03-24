@@ -120,10 +120,12 @@ void Raven_Map::AddDoorTrigger(std::ifstream& in)
 void Raven_Map::AddSpawnPoint(std::ifstream& in)
 {
   double x, y, dummy;
-
-  in >> dummy >> x >> y >> dummy >> dummy;                   //dummy values are artifacts from the map editor
+  int team;
+  in >> dummy >> x >> y >> dummy >> dummy >> team;                   //dummy values are artifacts from the map editor
 
   m_SpawnPoints.push_back(Vector2D(x,y));
+  if (team == 1) { team1spawn = Vector2D(x,y); }
+  if (team == 2) { team2spawn = Vector2D(x,y); }
 }
 
 
@@ -175,6 +177,10 @@ void Raven_Map::AddFlag(std::ifstream& in)
   NavGraph::NodeType& node = m_pNavGraph->GetNode(fs->GraphNodeIndex());
 
   node.SetExtraInfo(fs);
+
+  //temp
+  //if (fs->m_iOwnerTeam == 1){ team1spawn = fs->Pos(); };
+  //if (fs->m_iOwnerTeam == 2){ team2spawn = fs->Pos(); };
 
   //register the entity 
   EntityMgr->RegisterEntity(fs);

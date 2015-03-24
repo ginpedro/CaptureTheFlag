@@ -54,6 +54,10 @@ private:
   //it will appear at a randomly selected point chosen from this vector
   std::vector<Vector2D>              m_SpawnPoints;
 
+  //NEW: temp
+  Vector2D			 team1spawn;
+  Vector2D			 team2spawn;
+
   //a map may contain a number of sliding doors.
   std::vector<Raven_Door*>           m_Doors;
  
@@ -123,7 +127,17 @@ public:
   int                                GetSizeY()const{return m_iSizeY;}
   int                                GetMaxDimension()const{return Maximum(m_iSizeX, m_iSizeY);}
   double                             GetCellSpaceNeighborhoodRange()const{return m_dCellSpaceNeighborhoodRange;}
-
+  Vector2D			 GetTeamSpawnpoint(int team)
+  {
+	if (team == 1)
+	{
+		return team1spawn;
+	}
+	if (team == 2)
+	{
+		return team2spawn;
+	}
+  }
 };
 
 
