@@ -80,6 +80,8 @@ Creating a Spawn Point
 Creating a UNKNOWN OBJECT TYPE
 Creating a UNKNOWN OBJECT TYPE
 maps/capturethehp.map loaded okay
+BOT 1181 IS STUCK!!
+BOT 1188 IS STUCK!!
 deleting raven bot (id = 1181)
 deleting raven bot (id = 1182)
 deleting raven bot (id = 1183)

@@ -80,6 +80,9 @@
     <Filter Include="AI\Triggers\CTF">
       <UniqueIdentifier>{70da4580-be7b-45ea-bf18-d4fa005328fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\goals\composite\CTF">
+      <UniqueIdentifier>{39c8db90-ed04-4099-b9e2-5e685a704864}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -273,6 +276,9 @@
     </ClCompile>
     <ClCompile Include="Trigger_Flagspot.cpp">
       <Filter>AI\Triggers\CTF</Filter>
+    </ClCompile>
+    <ClCompile Include="Goal_GetFlag.cpp">
+      <Filter>AI\goals\composite\CTF</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -614,6 +620,9 @@
     </ClInclude>
     <ClInclude Include="Trigger_Flagspot.h">
       <Filter>AI\Triggers\CTF</Filter>
+    </ClInclude>
+    <ClInclude Include="Goal_GetFlag.h">
+      <Filter>AI\goals\composite\CTF</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
