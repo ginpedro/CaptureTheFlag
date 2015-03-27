@@ -14,6 +14,7 @@
 #include "../Raven_Bot.h"
 #include "../Raven_SensoryMemory.h"
 #include "../Raven_Game.h"
+#include "../Trigger_Flagspot.h"
 
 template <class trigger_type, class graph_type>
 class TerminatePolicy
@@ -174,5 +175,35 @@ public:
 		return bSatisfied;
 	}
 };
-  
+
+template <class trigger_type, class graph_type>
+class FindOpponentFlag : public TerminatePolicy<typename trigger_type, typename graph_type>
+{
+private:
+	int flag;
+
+public:
+	FindOpponentFlag(int opponent_team):TerminatePolicy<trigger_type, graph_type>(){flag = opponent_flag;}
+
+	bool isSatisfied(const graph_type& G, int target, int CurrentNodeIdx) {
+		bool bSatisfied = false;
+
+		//get a reference to the node at the given node index
+		const graph_type::NodeType& node = G.GetNode(CurrentNodeIdx);
+
+		//if the extrainfo field is pointing to a giver-trigger, test to make sure 
+		//it is active and that it is of the correct type.
+		if ((node.ExtraInfo() != NULL) && 
+			 node.ExtraInfo()->isActive() && 
+			(node.ExtraInfo()->EntityType() == target) )
+		{ 
+			if (node.ExtraInfo()->GetTeamOwner() == flag) {
+				bSatisfied = true;
+			}
+		}
+
+		return bSatisfied;
+	}
+};
+
 #endif

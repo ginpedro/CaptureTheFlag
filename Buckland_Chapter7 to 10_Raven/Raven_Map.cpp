@@ -179,8 +179,8 @@ void Raven_Map::AddFlag(std::ifstream& in)
   node.SetExtraInfo(fs);
 
   //temp
-  //if (fs->m_iOwnerTeam == 1){ team1spawn = fs->Pos(); };
-  //if (fs->m_iOwnerTeam == 2){ team2spawn = fs->Pos(); };
+  //if (fs->GetTeamOwner() == 1){ team1spawn = fs->Pos(); };
+  //if (fs->GerTeamOwner() == 2){ team2spawn = fs->Pos(); };
 
   //register the entity 
   EntityMgr->RegisterEntity(fs);

@@ -25,9 +25,10 @@ private:
   //the amount of health an entity receives when it runs over this trigger
   //int   m_iHealthGiven;
   
+  int m_iOwnerTeam;
+
 public:
 
-  int m_iOwnerTeam;
   Trigger_Flagspot(std::ifstream& datafile);
 
   //if triggered, the bot's health will be incremented
@@ -37,6 +38,8 @@ public:
   void Render();
 
   void Read (std::ifstream& is);
+
+  int GetTeamOwner(){return m_iOwnerTeam;}
 
   void Update()
   {

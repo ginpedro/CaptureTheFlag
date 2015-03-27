@@ -94,7 +94,7 @@ public:
 		SensedBots = runner->GetSensoryMem()->GetListOfRecentlySensedOpponents();
 
 		double d = Vec2DDistance(G.GetNode(nd1).Pos(), G.GetNode(nd2).Pos());
-		//double dSq = d*d;
+		double dmaxSq = dmax*dmax;
 		double dmaxCub = dmax*dmax*dmax;
 
 		double dA;
@@ -109,7 +109,7 @@ public:
 			return d;//dSq / dmaxSq;
 		}
 		else {
-			Vector2D posA = G.GetNode(nd1).Pos();
+			Vector2D posA = G.GetNode(nd2).Pos();
 			//Vector2D posB = G.GetNode(nd2).Pos();
 
 			std::list<Raven_Bot*>::const_iterator curBot = SensedBots.begin();
@@ -124,9 +124,12 @@ public:
 					//	dB = (*curBot)->BRadius();
 					//}
 
-					//if (dA <= dmax) {
+					if (dA < dmax) {
 						Ea += dmaxCub / (dA*dA);
-					//}
+					}
+					else {
+						Ea += dmaxSq / dA;
+					}
 
 					//if (dB <= dmax) {
 					//	Eb += dmaxSq / (dB*dB);
@@ -136,7 +139,7 @@ public:
 
 			double W = Ea;//Eb - Ea;
 
-			return d + W/q;//(dSq / dmaxSq) + (W / q);
+			return d + W;//(dSq / dmaxSq) + (W / q);
 		}
 	}
 };
