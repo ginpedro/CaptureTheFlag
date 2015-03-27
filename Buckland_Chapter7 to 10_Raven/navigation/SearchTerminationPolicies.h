@@ -183,7 +183,7 @@ private:
 	int flag;
 
 public:
-	FindOpponentFlag(int opponent_team):TerminatePolicy<trigger_type, graph_type>(){flag = opponent_flag;}
+	FindOpponentFlag(int opponent_flag):TerminatePolicy<trigger_type, graph_type>(){flag = opponent_flag;}
 
 	bool isSatisfied(const graph_type& G, int target, int CurrentNodeIdx) {
 		bool bSatisfied = false;
@@ -197,7 +197,7 @@ public:
 			 node.ExtraInfo()->isActive() && 
 			(node.ExtraInfo()->EntityType() == target) )
 		{ 
-			if (node.ExtraInfo()->GetTeamOwner() == flag) {
+			if (((Trigger_Flagspot*)node.ExtraInfo())->GetTeamOwner() == flag) {
 				bSatisfied = true;
 			}
 		}
