@@ -90,6 +90,9 @@ public:
   //NEW: desafio! crie essa funcao tbm
   bool       RequestPathToSecurePlace(double MaxDistFromEnemy);
 
+  //NEW:
+  bool       RequestPathToOpponentFlag(int OpponentTeamFlag);
+
   //called by an agent after it has been notified that a search has terminated
   //successfully. The method extracts the path from m_pCurrentSearch, adds
   //additional edges appropriate to the search type and returns it as a list of

@@ -665,3 +665,42 @@ bool Raven_PathPlanner::RequestPathToItemSecure(unsigned int ItemType, double Ma
 
   return true;
  }
+
+ //------------------------------- RequestPathToFlag ------------------------------
+//
+//---------------------------------------------------------------------------------------
+ bool Raven_PathPlanner::RequestPathToOpponentFlag(int OpponentTeamFlag) {
+	 //clear the waypoint list and delete any active search
+  GetReadyForNewSearch();
+
+  //find the closest visible node to the bots position
+  int ClosestNodeToBot = GetClosestNodeToPosition(m_pOwner->Pos());
+
+  //remove the destination node from the list and return false if no visible
+  //node found. This will occur if the navgraph is badly designed or if the bot
+  //has managed to get itself *inside* the geometry (surrounded by walls),
+  //or an obstacle
+  if (ClosestNodeToBot == no_closest_node_found)
+  { 
+#ifdef SHOW_NAVINFO
+    debug_con << "No closest node to bot found!" << "";
+#endif
+
+    return false; 
+  }
+
+  //create an instance of the search algorithm
+  typedef FindOpponentFlag<Trigger<Raven_Bot>,Raven_Map::NavGraph> t_con; 
+  //typedef Graph_SearchDijkstras_TS<Raven_Map::NavGraph, t_con> DijSearch;
+  typedef Graph_SearchDijkstras_TS<Trigger<Raven_Bot>,Raven_Map::NavGraph> DijSearch; 
+  
+  m_pCurrentSearch = new DijSearch(m_NavGraph,
+                                   ClosestNodeToBot,
+                                   13, //tipo da entidade "Trigger_Flagspot"
+								   new t_con(OpponentTeamFlag));
+
+  //register the search with the path manager
+  m_pOwner->GetWorld()->GetPathManager()->Register(this);
+
+  return true;
+ }
