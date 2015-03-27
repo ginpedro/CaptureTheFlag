@@ -18,6 +18,8 @@
 #include "ExploreGoal_Evaluator.h"
 #include "AttackTargetGoal_Evaluator.h"
 
+#include "Messaging/Telegram.h"
+#include "../Raven_Messages.h"
 
 Goal_Think::Goal_Think(Raven_Bot* pBot):Goal_Composite<Raven_Bot>(pBot, goal_think)
 {
@@ -199,5 +201,50 @@ void Goal_Think::Render()
   }
 }
 
+//---------------------------- HandleMessage ----------------------------------
+//-----------------------------------------------------------------------------
+bool Goal_Think::HandleMessage(const Telegram& msg)
+{
+  ////first, pass the message down the goal hierarchy
+  bool bHandled = ForwardMessageToFrontMostSubgoal(msg);
 
+  ////if the msg was not handled, test to see if this goal can handle it
+  if (bHandled == false)
+  {
+    switch(msg.Msg)
+    {
+
+	case Msg_IGotTheFlag:
+		RemoveAllSubgoals();
+
+		m_iStatus = completed;
+
+		return true;
+  //  case Msg_PathReady:
+
+  //    //clear any existing goals
+  //    RemoveAllSubgoals();
+
+  //    AddSubgoal(new Goal_FollowPath(m_pOwner,
+  //                                   m_pOwner->GetPathPlanner()->GetPath()));
+
+  //    //get the pointer to the item
+  //    m_pGiverTrigger = static_cast<Raven_Map::TriggerType*>(msg.ExtraInfo);
+
+  //    return true; //msg handled
+
+
+  //  case Msg_NoPathAvailable:
+
+  //    m_iStatus = failed;
+
+  //    return true; //msg handled
+
+    default: return false;
+    }
+  }
+
+  //handled by subgoals
+  return true;
+}
    
