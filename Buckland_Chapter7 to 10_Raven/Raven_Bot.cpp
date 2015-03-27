@@ -250,17 +250,19 @@ bool Raven_Bot::HandleMessage(const Telegram& msg)
     if (isDead() || isSpawning()) return true;
 
     //the extra info field of the telegram carries the amount of damage
+	debug_con << Health() << "\n";
+	SetDead();
 	//ReduceHealth(Health());
 
     //if this bot is now dead let the shooter know
-    if (isDead())
+    /*if (isDead())
     {
       Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
                               ID(),
                               msg.Sender,
                               Msg_YouGotMeYouSOB,
                               NO_ADDITIONAL_INFO);
-    }
+    }*/
 
     return true;
 

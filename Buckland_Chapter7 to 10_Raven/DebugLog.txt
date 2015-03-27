@@ -82,29 +82,29 @@ Creating a UNKNOWN OBJECT TYPE
 maps/capturethehp.map loaded okay
 BOT 1181 IS STUCK!!
 BOT 1182 IS STUCK!!
+BOT 1185 IS STUCK!!
+BOT 1186 IS STUCK!!
+BOT 1186 IS STUCK!!
 BOT 1187 IS STUCK!!
 BOT 1185 IS STUCK!!
-BOT 1188 IS STUCK!!
-BOT 1181 IS STUCK!!
 BOT 1182 IS STUCK!!
 BOT 1188 IS STUCK!!
-BOT 1184 IS STUCK!!
+BOT 1186 IS STUCK!!
+BOT 1187 IS STUCK!!
+BOT 1182 IS STUCK!!
+BOT 1188 IS STUCK!!
 i got the flag, sent message to bot 1185 T:2/1
 someone got our flag. 
+91
 i got the flag, sent message to bot 1186 T:2/1
 someone got our flag. 
+84
 i got the flag, sent message to bot 1187 T:2/1
 someone got our flag. 
+95
 i got the flag, sent message to bot 1188 T:2/1
 someone got our flag. 
-i got the flag, sent message to bot 1181 T:1/2
-someone got our flag. 
-i got the flag, sent message to bot 1182 T:1/2
-someone got our flag. 
-i got the flag, sent message to bot 1183 T:1/2
-someone got our flag. 
-i got the flag, sent message to bot 1184 T:1/2
-someone got our flag. 
+51
 deleting raven bot (id = 1181)
 deleting raven bot (id = 1182)
 deleting raven bot (id = 1183)
