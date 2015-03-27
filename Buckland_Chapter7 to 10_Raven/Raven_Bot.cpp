@@ -19,7 +19,6 @@
 #include "goals/Raven_Goal_Types.h"
 #include "goals/Goal_Think.h"
 
-
 #include "Debug/DebugConsole.h"
 
 //-------------------------- ctor ---------------------------------------------
@@ -215,6 +214,25 @@ bool Raven_Bot::isReadyForTriggerUpdate()const
   return m_pTriggerTestRegulator->isReady();
 }
 
+//NEW: Quando pegar a bandeira
+
+void Raven_Bot::notifyFlagGot()
+{
+	std::list<Raven_Bot*> bots = GetWorld()->GetAllBots();
+    std::list<Raven_Bot*>::const_iterator curBot = bots.begin();
+    for (curBot; curBot != bots.end(); ++curBot)
+    {
+	  if ((*curBot)->getTeam() != Team)
+	  { debug_con << "i got the flag, sent message to bot " << (*curBot)->ID() << " T:" << (*curBot)->getTeam() << "/" << Team << "\n";
+		Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+                              SENDER_ID_IRRELEVANT,
+                              (*curBot)->ID(),
+                              Msg_IGotTheFlag,
+                              NO_ADDITIONAL_INFO);
+	  }
+    }
+}
+
 //--------------------------- HandleMessage -----------------------------------
 //-----------------------------------------------------------------------------
 bool Raven_Bot::HandleMessage(const Telegram& msg)
@@ -225,6 +243,27 @@ bool Raven_Bot::HandleMessage(const Telegram& msg)
   //handle any messages not handles by the goals
   switch(msg.Msg)
   {
+
+  case Msg_IGotTheFlag:
+	debug_con << "someone got our flag. \n";
+    //just return if already dead or spawning
+    if (isDead() || isSpawning()) return true;
+
+    //the extra info field of the telegram carries the amount of damage
+	//ReduceHealth(Health());
+
+    //if this bot is now dead let the shooter know
+    if (isDead())
+    {
+      Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+                              ID(),
+                              msg.Sender,
+                              Msg_YouGotMeYouSOB,
+                              NO_ADDITIONAL_INFO);
+    }
+
+    return true;
+
   case Msg_TakeThatMF:
 
     //just return if already dead or spawning

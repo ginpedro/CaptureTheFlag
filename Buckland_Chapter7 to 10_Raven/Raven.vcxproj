@@ -211,6 +211,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GetFlagGoal_Evaluator.cpp" />
     <ClCompile Include="Goal_GetFlag.cpp" />
     <ClCompile Include="main.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -530,6 +531,7 @@
     <ClCompile Include="Trigger_Flagspot.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GetFlagGoal_Evaluator.h" />
     <ClInclude Include="Goal_GetFlag.h" />
     <ClInclude Include="Raven_Bot.h" />
     <ClInclude Include="Raven_Game.h" />

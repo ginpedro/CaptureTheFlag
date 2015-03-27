@@ -52,6 +52,8 @@ public:
   void AddGoal_Explore();
   void AddGoal_AttackTarget();
 
+  void AddGoal_GetFlag();
+
   //this adds the MoveToPosition goal to the *back* of the subgoal list.
   void QueueGoal_MoveToPosition(Vector2D pos);
 
@@ -59,7 +61,7 @@ public:
   void  RenderEvaluations(int left, int top)const;
   void  Render();
 
-  bool  HandleMessage(const Telegram& msg);
+  //bool  HandleMessage(const Telegram& msg);
 };
 
 

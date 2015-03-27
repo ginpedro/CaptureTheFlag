@@ -44,11 +44,11 @@ public:
   void Update()
   {
   
-	if (!isActive())
+	/*if (!isActive())
     {
       SetActive();
     }
-  
+  */
   }
 };
 

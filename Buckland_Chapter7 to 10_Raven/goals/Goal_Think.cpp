@@ -11,12 +11,15 @@
 #include "Goal_Wander.h"
 #include "Raven_Goal_Types.h"
 #include "Goal_AttackTarget.h"
+#include "../Goal_GetFlag.h"
 
 
 #include "GetWeaponGoal_Evaluator.h"
 #include "GetHealthGoal_Evaluator.h"
 #include "ExploreGoal_Evaluator.h"
 #include "AttackTargetGoal_Evaluator.h"
+
+#include "../GetFlagGoal_Evaluator.h"
 
 #include "Messaging/Telegram.h"
 #include "../Raven_Messages.h"
@@ -35,6 +38,7 @@ Goal_Think::Goal_Think(Raven_Bot* pBot):Goal_Composite<Raven_Bot>(pBot, goal_thi
   double RailgunBias = RandInRange(LowRangeOfBias, HighRangeOfBias);
   double ExploreBias = RandInRange(LowRangeOfBias, HighRangeOfBias);
   double AttackBias = RandInRange(LowRangeOfBias, HighRangeOfBias);
+  double FlagBias = 2.0;
 
   //create the evaluator objects
   m_Evaluators.push_back(new GetHealthGoal_Evaluator(HealthBias));
@@ -46,6 +50,7 @@ Goal_Think::Goal_Think(Raven_Bot* pBot):Goal_Composite<Raven_Bot>(pBot, goal_thi
                                                      type_rail_gun));
   m_Evaluators.push_back(new GetWeaponGoal_Evaluator(RocketLauncherBias,
                                                      type_rocket_launcher));
+  m_Evaluators.push_back(new GetFlagGoal_Evaluator(FlagBias));
 }
 
 //----------------------------- dtor ------------------------------------------
@@ -168,6 +173,15 @@ void Goal_Think::AddGoal_AttackTarget()
   }
 }
 
+void Goal_Think::AddGoal_GetFlag()
+{
+	if (notPresent(goal_get_flag))
+  {
+    RemoveAllSubgoals();
+    AddSubgoal( new Goal_GetFlag(m_pOwner));
+  }
+}
+
 //-------------------------- Queue Goals --------------------------------------
 //-----------------------------------------------------------------------------
 void Goal_Think::QueueGoal_MoveToPosition(Vector2D pos)
@@ -201,50 +215,50 @@ void Goal_Think::Render()
   }
 }
 
-//---------------------------- HandleMessage ----------------------------------
-//-----------------------------------------------------------------------------
-bool Goal_Think::HandleMessage(const Telegram& msg)
-{
-  ////first, pass the message down the goal hierarchy
-  bool bHandled = ForwardMessageToFrontMostSubgoal(msg);
-
-  ////if the msg was not handled, test to see if this goal can handle it
-  if (bHandled == false)
-  {
-    switch(msg.Msg)
-    {
-
-	case Msg_IGotTheFlag:
-		RemoveAllSubgoals();
-
-		m_iStatus = completed;
-
-		return true;
-  //  case Msg_PathReady:
-
-  //    //clear any existing goals
-  //    RemoveAllSubgoals();
-
-  //    AddSubgoal(new Goal_FollowPath(m_pOwner,
-  //                                   m_pOwner->GetPathPlanner()->GetPath()));
-
-  //    //get the pointer to the item
-  //    m_pGiverTrigger = static_cast<Raven_Map::TriggerType*>(msg.ExtraInfo);
-
-  //    return true; //msg handled
-
-
-  //  case Msg_NoPathAvailable:
-
-  //    m_iStatus = failed;
-
-  //    return true; //msg handled
-
-    default: return false;
-    }
-  }
-
-  //handled by subgoals
-  return true;
-}
+////---------------------------- HandleMessage ----------------------------------
+////-----------------------------------------------------------------------------
+//bool Goal_Think::HandleMessage(const Telegram& msg)
+//{
+//  ////first, pass the message down the goal hierarchy
+//  bool bHandled = ForwardMessageToFrontMostSubgoal(msg);
+//
+//  ////if the msg was not handled, test to see if this goal can handle it
+//  if (bHandled == false)
+//  {
+//    switch(msg.Msg)
+//    {
+//
+//	case Msg_IGotTheFlag:
+//		RemoveAllSubgoals();
+//
+//		m_iStatus = completed;
+//
+//		return true;
+//  //  case Msg_PathReady:
+//
+//  //    //clear any existing goals
+//  //    RemoveAllSubgoals();
+//
+//  //    AddSubgoal(new Goal_FollowPath(m_pOwner,
+//  //                                   m_pOwner->GetPathPlanner()->GetPath()));
+//
+//  //    //get the pointer to the item
+//  //    m_pGiverTrigger = static_cast<Raven_Map::TriggerType*>(msg.ExtraInfo);
+//
+//  //    return true; //msg handled
+//
+//
+//  //  case Msg_NoPathAvailable:
+//
+//  //    m_iStatus = failed;
+//
+//  //    return true; //msg handled
+//
+//    default: return false;
+//    }
+//  }
+//
+//  //handled by subgoals
+//  return true;
+//}
    

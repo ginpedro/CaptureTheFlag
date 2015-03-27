@@ -21,7 +21,8 @@ void Trigger_Flagspot::Try(Raven_Bot* pBot)
   if (isActive() && isTouchingTrigger(pBot->Pos(), pBot->BRadius()))
   {
 	//NEW: Dizer que a bandeira foi capturada.
-    //pBot->IncreaseHealth(m_iHealthGiven);
+    pBot->notifyFlagGot();
+	SetInactive();
   } 
 }
 

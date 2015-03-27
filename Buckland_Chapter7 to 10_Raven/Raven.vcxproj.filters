@@ -83,6 +83,9 @@
     <Filter Include="AI\goals\composite\CTF">
       <UniqueIdentifier>{39c8db90-ed04-4099-b9e2-5e685a704864}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\goals\goal evaluation\CTF">
+      <UniqueIdentifier>{935cf0b0-d6be-4d9b-933b-fdea02e068d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -279,6 +282,9 @@
     </ClCompile>
     <ClCompile Include="Goal_GetFlag.cpp">
       <Filter>AI\goals\composite\CTF</Filter>
+    </ClCompile>
+    <ClCompile Include="GetFlagGoal_Evaluator.cpp">
+      <Filter>AI\goals\goal evaluation\CTF</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -623,6 +629,9 @@
     </ClInclude>
     <ClInclude Include="Goal_GetFlag.h">
       <Filter>AI\goals\composite\CTF</Filter>
+    </ClInclude>
+    <ClInclude Include="GetFlagGoal_Evaluator.h">
+      <Filter>AI\goals\goal evaluation\CTF</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

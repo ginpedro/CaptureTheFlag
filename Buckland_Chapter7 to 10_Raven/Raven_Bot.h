@@ -173,6 +173,7 @@ public:
   //returns true if the bot is close to the given position
   bool          isAtPosition(Vector2D pos)const;
 
+  void notifyFlagGot();
 
   //interface for human player
   void          FireWeapon(Vector2D pos);
