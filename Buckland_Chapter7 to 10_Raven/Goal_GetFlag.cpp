@@ -44,7 +44,15 @@ void Goal_GetFlag::Activate()
   m_pGiverTrigger = 0;
   
   //request a path to the item
-  //m_pOwner->GetPathPlanner()->RequestPathToItem(m_iItemToGet);
+  int op_flag;
+  if (m_pOwner->getTeam() == 1)
+  {
+	op_flag = 2;
+  }else
+  {
+	op_flag = 1;
+  }
+  m_pOwner->GetPathPlanner()->RequestPathToOpponentFlag(op_flag);
 
   //the bot may have to wait a few update cycles before a path is calculated
   //so for appearances sake it just wanders
