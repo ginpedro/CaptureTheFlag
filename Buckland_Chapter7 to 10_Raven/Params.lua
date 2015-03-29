@@ -12,7 +12,7 @@ NumBots2   = 4
 MaxSearchCyclesPerUpdateStep = 1000
 
 --the name of the default map
-StartMap = "maps/capturethehp.map"
+StartMap = "maps/trainCTF.map"
 
 --cell space partitioning defaults
 NumCellsX = 10

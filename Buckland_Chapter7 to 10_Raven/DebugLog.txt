@@ -80,31 +80,7 @@ Creating a Spawn Point
 Creating a UNKNOWN OBJECT TYPE
 Creating a UNKNOWN OBJECT TYPE
 maps/capturethehp.map loaded okay
-BOT 1181 IS STUCK!!
-BOT 1182 IS STUCK!!
-BOT 1185 IS STUCK!!
-BOT 1186 IS STUCK!!
-BOT 1186 IS STUCK!!
-BOT 1187 IS STUCK!!
-BOT 1185 IS STUCK!!
-BOT 1182 IS STUCK!!
-BOT 1188 IS STUCK!!
-BOT 1186 IS STUCK!!
-BOT 1187 IS STUCK!!
-BOT 1182 IS STUCK!!
-BOT 1188 IS STUCK!!
-i got the flag, sent message to bot 1185 T:2/1
-someone got our flag. 
-91
-i got the flag, sent message to bot 1186 T:2/1
-someone got our flag. 
-84
-i got the flag, sent message to bot 1187 T:2/1
-someone got our flag. 
-95
-i got the flag, sent message to bot 1188 T:2/1
-someone got our flag. 
-51
+Filename: TrainCTF.map
 deleting raven bot (id = 1181)
 deleting raven bot (id = 1182)
 deleting raven bot (id = 1183)
@@ -113,3 +89,264 @@ deleting raven bot (id = 1185)
 deleting raven bot (id = 1186)
 deleting raven bot (id = 1187)
 deleting raven bot (id = 1188)
+NavGraph for TrainCTF.map loaded okay
+Average edge length is 23.6804
+Neighborhood range set to 24.6804
+Partitioning navgraph nodes...
+Loading map...
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Wall
+Creating a Spawn Point
+Creating a Spawn Point
+Creating a Spawn Point
+Creating a Spawn Point
+Creating a Spawn Point
+Creating a Spawn Point
+Creating a Spawn Point
+Creating a Spawn Point
+Creating a UNKNOWN OBJECT TYPE
+Creating a UNKNOWN OBJECT TYPE
+TrainCTF.map loaded okay
+i got the flag, sent message to bot 1334 T:2/1
+someone got our flag. 
+89
+i got the flag, sent message to bot 1335 T:2/1
+someone got our flag. 
+99
+i got the flag, sent message to bot 1336 T:2/1
+someone got our flag. 
+100
+i got the flag, sent message to bot 1337 T:2/1
+someone got our flag. 
+99
+deleting raven bot (id = 1330)
+deleting raven bot (id = 1331)
+deleting raven bot (id = 1332)
+deleting raven bot (id = 1333)
+deleting raven bot (id = 1334)
+deleting raven bot (id = 1335)
+deleting raven bot (id = 1336)
+deleting raven bot (id = 1337)
