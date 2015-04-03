@@ -55,8 +55,8 @@ private:
   std::vector<Vector2D>              m_SpawnPoints;
 
   //NEW: temp
-  Vector2D			 team1spawn;
-  Vector2D			 team2spawn;
+  std::list<Vector2D>			 team1spawn;
+  std::list<Vector2D>			 team2spawn;
 
   //a map may contain a number of sliding doors.
   std::vector<Raven_Door*>           m_Doors;
@@ -131,11 +131,19 @@ public:
   {
 	if (team == 1)
 	{
-		return team1spawn;
+		std::list<Vector2D>::const_iterator iter = team1spawn.begin();
+		Vector2D ret = *iter;
+		team1spawn.pop_front();
+		team1spawn.push_back(ret);
+		return ret;
 	}
 	if (team == 2)
 	{
-		return team2spawn;
+		std::list<Vector2D>::const_iterator iter = team2spawn.begin();
+		Vector2D ret = *iter;
+		team2spawn.pop_front();
+		team2spawn.push_back(ret);
+		return ret;
 	}
   }
 };

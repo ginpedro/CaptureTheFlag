@@ -248,13 +248,13 @@ bool Raven_Game::AttemptToAddBot(Raven_Bot* pBot)
 //
 //  Adds a bot and switches on the default steering behavior
 //-----------------------------------------------------------------------------
-void Raven_Game::AddBots(unsigned int NumBotsToAdd, int team)
+void Raven_Game::AddBots(unsigned int NumBotsToAdd)
 { 
   while (NumBotsToAdd--)
   {
     //create a bot. (its position is irrelevant at this point because it will
     //not be rendered until it is spawned)
-    Raven_Bot* rb = new Raven_Bot(this, Vector2D(),team);
+    Raven_Bot* rb = new Raven_Bot(this, Vector2D(),1);
 
     //switch the default steering behaviors on
     rb->GetSteering()->WallAvoidanceOn();
@@ -265,6 +265,16 @@ void Raven_Game::AddBots(unsigned int NumBotsToAdd, int team)
     //register the bot with the entity manager
     EntityMgr->RegisterEntity(rb);
 
+	Raven_Bot* rb2 = new Raven_Bot(this, Vector2D(),2);
+
+    //switch the default steering behaviors on
+    rb2->GetSteering()->WallAvoidanceOn();
+    rb2->GetSteering()->SeparationOn();
+
+    m_Bots.push_back(rb2);
+
+    //register the bot with the entity manager
+    EntityMgr->RegisterEntity(rb2);
     
 #ifdef LOG_CREATIONAL_STUFF
   debug_con << "Adding bot with ID " << ttos(rb->ID()) << "";
@@ -400,8 +410,7 @@ bool Raven_Game::LoadMap(const std::string& filename)
   //load the new map data
   if (m_pMap->LoadMap(filename))
   { 
-    AddBots(script->GetInt("NumBots1"),1);
-    AddBots(script->GetInt("NumBots2"),2);
+    AddBots(script->GetInt("NumBots"));    
     return true;
   }
 

@@ -124,8 +124,8 @@ void Raven_Map::AddSpawnPoint(std::ifstream& in)
   in >> dummy >> x >> y >> dummy >> dummy >> team;                   //dummy values are artifacts from the map editor
 
   m_SpawnPoints.push_back(Vector2D(x,y));
-  if (team == 1) { team1spawn = Vector2D(x,y); }
-  if (team == 2) { team2spawn = Vector2D(x,y); }
+  if (team == 1) { team1spawn.push_back(Vector2D(x,y)); }
+  if (team == 2) { team2spawn.push_back(Vector2D(x,y)); }
 }
 
 

@@ -4,8 +4,7 @@
 
 --the number of bots the game instantiates
 
-NumBots1   = 4
-NumBots2   = 4
+NumBots   = 4
 
 --this is the maximum number of search cycles allocated to *all* current path
 -- planning searches per update
