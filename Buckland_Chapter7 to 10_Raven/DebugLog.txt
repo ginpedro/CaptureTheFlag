@@ -239,15 +239,16 @@ Creating a Spawn Point
 Creating a UNKNOWN OBJECT TYPE
 Creating a UNKNOWN OBJECT TYPE
 maps/trainCTF.map loaded okay
+BOT 1330 IS STUCK!!
 i got the flag, sent message to bot 1330 T:1/2
 someone got our flag. 
 100
 i got the flag, sent message to bot 1332 T:1/2
 someone got our flag. 
-84
+85
 i got the flag, sent message to bot 1334 T:1/2
 someone got our flag. 
-99
+100
 i got the flag, sent message to bot 1336 T:1/2
 someone got our flag. 
 100

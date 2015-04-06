@@ -86,6 +86,9 @@
     <Filter Include="AI\goals\goal evaluation\CTF">
       <UniqueIdentifier>{935cf0b0-d6be-4d9b-933b-fdea02e068d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\Messaging\CTF">
+      <UniqueIdentifier>{d2fcc120-2daa-4480-b74e-2afcc131fceb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -632,6 +635,9 @@
     </ClInclude>
     <ClInclude Include="GetFlagGoal_Evaluator.h">
       <Filter>AI\goals\goal evaluation\CTF</Filter>
+    </ClInclude>
+    <ClInclude Include="Blackboard.h">
+      <Filter>AI\Messaging\CTF</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

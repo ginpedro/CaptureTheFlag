@@ -531,6 +531,7 @@
     <ClCompile Include="Trigger_Flagspot.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Blackboard.h" />
     <ClInclude Include="GetFlagGoal_Evaluator.h" />
     <ClInclude Include="Goal_GetFlag.h" />
     <ClInclude Include="Raven_Bot.h" />
