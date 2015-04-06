@@ -9,11 +9,4 @@ class Blackboard
 
 }
 
-class bbRequest
-{
-
-	bbRequest();
-
-}
-
 #endif

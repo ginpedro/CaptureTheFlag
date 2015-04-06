@@ -468,6 +468,7 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='boundschecker|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="Request_HelpDefendFlag.cpp" />
     <ClCompile Include="triggers\Trigger_HealthGiver.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -531,6 +532,7 @@
     <ClCompile Include="Trigger_Flagspot.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bbRequest.h" />
     <ClInclude Include="Blackboard.h" />
     <ClInclude Include="GetFlagGoal_Evaluator.h" />
     <ClInclude Include="Goal_GetFlag.h" />
@@ -562,6 +564,7 @@
     <ClInclude Include="Raven_Door.h" />
     <ClInclude Include="Raven_ObjectEnumerations.h" />
     <ClInclude Include="Raven_UserOptions.h" />
+    <ClInclude Include="Request_HelpDefendFlag.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="goals\Raven_Goal_Types.h" />
     <ClInclude Include="goals\Goal_AdjustRange.h" />

@@ -289,6 +289,9 @@
     <ClCompile Include="GetFlagGoal_Evaluator.cpp">
       <Filter>AI\goals\goal evaluation\CTF</Filter>
     </ClCompile>
+    <ClCompile Include="Request_HelpDefendFlag.cpp">
+      <Filter>AI\Messaging\CTF</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Raven_Bot.h">
@@ -637,6 +640,12 @@
       <Filter>AI\goals\goal evaluation\CTF</Filter>
     </ClInclude>
     <ClInclude Include="Blackboard.h">
+      <Filter>AI\Messaging\CTF</Filter>
+    </ClInclude>
+    <ClInclude Include="bbRequest.h">
+      <Filter>AI\Messaging\CTF</Filter>
+    </ClInclude>
+    <ClInclude Include="Request_HelpDefendFlag.h">
       <Filter>AI\Messaging\CTF</Filter>
     </ClInclude>
   </ItemGroup>
