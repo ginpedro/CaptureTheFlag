@@ -4,9 +4,12 @@
 
 class Blackboard
 {
+private:
+	
+public:
 
-	Blackboard();
+	Blackboard(){};
 
-}
+};
 
 #endif

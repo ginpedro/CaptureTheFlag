@@ -9,8 +9,8 @@ class Request_HelpDefendFlag: public bbRequest
 private:
 	
 public:
-	Request_HelpDefendFlag();
-	void calculatePrice(double distFlag, int hp);
-}
+	Request_HelpDefendFlag(Raven_Bot* owner);
+	void calculatePrice(Raven_Bot* pBot, double distFlag, int hp);
+};
 
 #endif

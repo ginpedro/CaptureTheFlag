@@ -8,20 +8,26 @@ struct offer
 {
 	Raven_Bot* sender;
 	double cost;
-}
+};
 
 enum {help_defend_flag, help_capture_flag};
+
+enum {now, urgent, please, ifyoucan};
 
 class bbRequest
 {
 private:
+	Raven_Bot* rBot;
 	int type;
 	offer bestOffer;
 public:
-	bbRequest();
-	setType(int val){type = val;};
-	getType(){return type;};
+	bbRequest(Raven_Bot* owner) {rBot = owner; bestOffer.sender = NULL; bestOffer.cost = -1;}
+	void setType(int val){type = val;}
+	int getType(){return type;}
+	offer getBestOffer() {return bestOffer;}
+	void setBestOffer(Raven_Bot* pBot, double cost) {bestOffer.sender = pBot; bestOffer.cost = cost;}
+	Raven_Bot* getOwner() {return rBot;}
 	//double calculate();
-}
+};
 
 #endif
