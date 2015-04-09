@@ -26,7 +26,7 @@ private:
   //int   m_iHealthGiven;
   
   int m_iOwnerTeam;
-
+  int dangerAreaRadius;
 public:
 
   Trigger_Flagspot(std::ifstream& datafile);
@@ -49,6 +49,11 @@ public:
       SetActive();
     }
   */
+  }
+
+  int getDangerZone()
+  {
+	return dangerAreaRadius;
   }
 };
 

@@ -32,6 +32,8 @@ void Trigger_Flagspot::Render()
   if (isActive())
   {
     gdi->BlackPen();
+	gdi->WhiteBrush();
+	gdi->Circle(Pos(),dangerAreaRadius);
 	if (m_iOwnerTeam == 1) {gdi->RedBrush();}
 	if (m_iOwnerTeam == 2) {gdi->BlueBrush();}
     const int sz = 5;
@@ -48,6 +50,8 @@ void Trigger_Flagspot::Render()
     gdi->BlackPen();
     gdi->Line(Pos().x-sz, Pos().y, Pos().x-sz, Pos().y+sz+sz);	
     //gdi->Line(Pos().x-sz, Pos().y, Pos().x+sz+1, Pos().y);
+	
+
   }
 }
 
@@ -58,7 +62,7 @@ void Trigger_Flagspot::Read(std::ifstream& in)
   int GraphNodeIndex;
   int team;
 
-  in >> x >> y  >> r >> GraphNodeIndex >> team;
+  in >> x >> y  >> r >> GraphNodeIndex >> team >> dangerAreaRadius;
 
   SetPos(Vector2D(x,y)); 
   SetBRadius(r);
