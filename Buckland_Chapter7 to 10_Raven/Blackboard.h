@@ -13,6 +13,7 @@ public:
 	void postRequest(bbRequest req);
 	std::list<bbRequest*> getNowRequests();
 	std::list<bbRequest*> getAllRequests();
+	void Update(){};
 };
 
 #endif

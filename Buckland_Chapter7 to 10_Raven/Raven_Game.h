@@ -26,6 +26,7 @@
 #include "Raven_Bot.h"
 #include "navigation/pathmanager.h"
 
+#include "Blackboard.h"
 
 class BaseGameEntity;
 class Raven_Projectile;
@@ -37,6 +38,10 @@ class GraveMarkers;
 class Raven_Game
 {
 private:
+
+	Blackboard BTeam1;
+
+	Blackboard BTeam2;
 
   //the current game map
   Raven_Map*                       m_pMap;
@@ -153,6 +158,7 @@ public:
   Raven_Bot*  PossessedBot()const{return m_pSelectedBot;}
   void        ChangeWeaponOfPossessedBot(unsigned int weapon)const;
 
+  Blackboard*                              GetMyBoard(int team){if (team == 1) {return &BTeam1;} else {return &BTeam2;}}
   
   const Raven_Map* const                   GetMap()const{return m_pMap;}
   Raven_Map* const                         GetMap(){return m_pMap;}

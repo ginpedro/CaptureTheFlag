@@ -109,6 +109,10 @@ void Raven_Game::Update()
   //don't update if the user has paused the game
   if (m_bPaused) return;
 
+  BTeam1.Update();
+
+  BTeam2.Update();
+
   m_pGraveMarkers->Update();
 
   //get any player keyboard input
