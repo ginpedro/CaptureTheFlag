@@ -1,8 +1,9 @@
-#include "Request_HelpDefendFlag.h";
+#include "Request_HelpDefendFlag.h"
 
 Request_HelpDefendFlag::Request_HelpDefendFlag(Raven_Bot* owner):bbRequest(owner)
 {
 	setType(help_defend_flag);
+	setUrgency(urgent);
 }
 
 void Request_HelpDefendFlag::calculatePrice(Raven_Bot* pBot, double distFlag,int hp)

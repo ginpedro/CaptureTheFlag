@@ -292,6 +292,9 @@
     <ClCompile Include="Request_HelpDefendFlag.cpp">
       <Filter>AI\Messaging\CTF</Filter>
     </ClCompile>
+    <ClCompile Include="Blackboard.cpp">
+      <Filter>AI\Messaging\CTF</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Raven_Bot.h">

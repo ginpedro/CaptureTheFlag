@@ -239,18 +239,6 @@ Creating a Spawn Point
 Creating a UNKNOWN OBJECT TYPE
 Creating a UNKNOWN OBJECT TYPE
 maps/trainCTF.map loaded okay
-i got the flag, sent message to bot 1331 T:2/1
-someone got our flag. 
-87
-i got the flag, sent message to bot 1333 T:2/1
-someone got our flag. 
-97
-i got the flag, sent message to bot 1335 T:2/1
-someone got our flag. 
-97
-i got the flag, sent message to bot 1337 T:2/1
-someone got our flag. 
-98
 deleting raven bot (id = 1330)
 deleting raven bot (id = 1331)
 deleting raven bot (id = 1332)

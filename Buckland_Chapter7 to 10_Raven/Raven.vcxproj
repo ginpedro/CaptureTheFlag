@@ -211,6 +211,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Blackboard.cpp" />
     <ClCompile Include="GetFlagGoal_Evaluator.cpp" />
     <ClCompile Include="Goal_GetFlag.cpp" />
     <ClCompile Include="main.cpp">

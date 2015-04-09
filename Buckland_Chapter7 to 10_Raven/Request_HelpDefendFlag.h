@@ -2,7 +2,7 @@
 #define BBREQUEST_HDF_H
 #pragma warning (disable:4786)
 
-#include "bbRequest.h";
+#include "bbRequest.h"
 
 class Request_HelpDefendFlag: public bbRequest
 {
