@@ -26,3 +26,13 @@ std::list<bbRequest*> Blackboard::getAllRequests() {
 	}
 	return pReq;
 }
+
+void Blackboard::Update()
+{
+	for (std::list<bbRequest>::iterator it = reqList.begin(); it != reqList.end(); ++it) {
+		if (it->getUrgency() != now)
+		{
+			it->setUrgency(it->getUrgency()-1);
+		}
+	}	
+}

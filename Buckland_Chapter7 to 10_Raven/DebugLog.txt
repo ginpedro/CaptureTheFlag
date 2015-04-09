@@ -239,18 +239,27 @@ Creating a Spawn Point
 Creating a UNKNOWN OBJECT TYPE
 Creating a UNKNOWN OBJECT TYPE
 maps/trainCTF.map loaded okay
+BOT 1330 IS STUCK!!
+BOT 1331 IS STUCK!!
+BOT 1332 IS STUCK!!
+BOT 1334 IS STUCK!!
+BOT 1337 IS STUCK!!
+BOT 1335 IS STUCK!!
+BOT 1333 IS STUCK!!
 i got the flag, sent message to bot 1330 T:1/2
 someone got our flag. 
-100
+96
 i got the flag, sent message to bot 1332 T:1/2
 someone got our flag. 
-88
+87
 i got the flag, sent message to bot 1334 T:1/2
 someone got our flag. 
 100
 i got the flag, sent message to bot 1336 T:1/2
 someone got our flag. 
-97
+100
+Player is exorcised from bot 1330
+Player is exorcised from bot 1331
 deleting raven bot (id = 1330)
 deleting raven bot (id = 1331)
 deleting raven bot (id = 1332)
