@@ -53,6 +53,7 @@ public:
   void AddGoal_AttackTarget();
 
   void AddGoal_GetFlag();
+  void AddGoal_DefendFlag();
 
   //this adds the MoveToPosition goal to the *back* of the subgoal list.
   void QueueGoal_MoveToPosition(Vector2D pos);

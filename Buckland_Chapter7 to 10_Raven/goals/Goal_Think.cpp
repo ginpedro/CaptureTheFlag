@@ -12,6 +12,7 @@
 #include "Raven_Goal_Types.h"
 #include "Goal_AttackTarget.h"
 #include "../Goal_GetFlag.h"
+#include "../Goal_DefendFlag.h"
 
 
 #include "GetWeaponGoal_Evaluator.h"
@@ -20,6 +21,7 @@
 #include "AttackTargetGoal_Evaluator.h"
 
 #include "../GetFlagGoal_Evaluator.h"
+#include "../DefendFlagGoal_Evaluator.h"
 
 #include "Messaging/Telegram.h"
 #include "../Raven_Messages.h"
@@ -38,7 +40,8 @@ Goal_Think::Goal_Think(Raven_Bot* pBot):Goal_Composite<Raven_Bot>(pBot, goal_thi
   double RailgunBias = RandInRange(LowRangeOfBias, HighRangeOfBias);
   double ExploreBias = RandInRange(LowRangeOfBias, HighRangeOfBias);
   double AttackBias = RandInRange(LowRangeOfBias, HighRangeOfBias);
-  double FlagBias = 2.0;
+  double FlagBias = RandInRange(LowRangeOfBias, HighRangeOfBias);
+  double dFlagBias = RandInRange(LowRangeOfBias, HighRangeOfBias);
 
   //create the evaluator objects
   m_Evaluators.push_back(new GetHealthGoal_Evaluator(HealthBias));
@@ -51,6 +54,7 @@ Goal_Think::Goal_Think(Raven_Bot* pBot):Goal_Composite<Raven_Bot>(pBot, goal_thi
   m_Evaluators.push_back(new GetWeaponGoal_Evaluator(RocketLauncherBias,
                                                      type_rocket_launcher));
   m_Evaluators.push_back(new GetFlagGoal_Evaluator(FlagBias));
+  m_Evaluators.push_back(new DefendFlagGoal_Evaluator(dFlagBias));
 }
 
 //----------------------------- dtor ------------------------------------------
@@ -179,6 +183,15 @@ void Goal_Think::AddGoal_GetFlag()
   {
     RemoveAllSubgoals();
     AddSubgoal( new Goal_GetFlag(m_pOwner));
+  }
+}
+
+void Goal_Think::AddGoal_DefendFlag()
+{
+	if (notPresent(goal_defend_flag))
+  {
+    RemoveAllSubgoals();
+    AddSubgoal( new Goal_DefendFlag(m_pOwner));
   }
 }
 

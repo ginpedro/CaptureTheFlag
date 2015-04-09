@@ -212,7 +212,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Blackboard.cpp" />
+    <ClCompile Include="DefendFlagGoal_Evaluator.cpp" />
     <ClCompile Include="GetFlagGoal_Evaluator.cpp" />
+    <ClCompile Include="Goal_DefendFlag.cpp" />
     <ClCompile Include="Goal_GetFlag.cpp" />
     <ClCompile Include="main.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -535,7 +537,9 @@
   <ItemGroup>
     <ClInclude Include="bbRequest.h" />
     <ClInclude Include="Blackboard.h" />
+    <ClInclude Include="DefendFlagGoal_Evaluator.h" />
     <ClInclude Include="GetFlagGoal_Evaluator.h" />
+    <ClInclude Include="Goal_DefendFlag.h" />
     <ClInclude Include="Goal_GetFlag.h" />
     <ClInclude Include="Raven_Bot.h" />
     <ClInclude Include="Raven_Game.h" />

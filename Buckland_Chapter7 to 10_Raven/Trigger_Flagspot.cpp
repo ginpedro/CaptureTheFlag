@@ -18,7 +18,7 @@ Trigger_Flagspot::Trigger_Flagspot(std::ifstream& datafile):
 
 void Trigger_Flagspot::Try(Raven_Bot* pBot)
 {
-  if (isActive() && isTouchingTrigger(pBot->Pos(), pBot->BRadius()))
+  if (isActive() && isTouchingTrigger(pBot->Pos(), pBot->BRadius()) && pBot->getTeam() != m_iOwnerTeam)
   {
 	//NEW: Dizer que a bandeira foi capturada.
     pBot->notifyFlagGot();

@@ -87,6 +87,10 @@ std::string GoalTypeToString::Convert(int gt)
 
     return "get_flag";
 
+  case goal_defend_flag:
+
+    return "defend_flag";
+
   default:
 
     return "UNKNOWN GOAL TYPE!";
