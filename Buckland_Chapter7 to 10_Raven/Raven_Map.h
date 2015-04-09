@@ -137,7 +137,7 @@ public:
 		team1spawn.push_back(ret);
 		return ret;
 	}
-	if (team == 2)
+	else
 	{
 		std::list<Vector2D>::const_iterator iter = team2spawn.begin();
 		Vector2D ret = *iter;
