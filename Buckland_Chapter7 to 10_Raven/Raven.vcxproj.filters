@@ -89,6 +89,9 @@
     <Filter Include="AI\Messaging\CTF">
       <UniqueIdentifier>{d2fcc120-2daa-4480-b74e-2afcc131fceb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI\goals\atomic\CTF">
+      <UniqueIdentifier>{0718b603-24b5-4f77-91b2-7d4bfba6a24b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -300,6 +303,9 @@
     </ClCompile>
     <ClCompile Include="DefendFlagGoal_Evaluator.cpp">
       <Filter>AI\goals\goal evaluation\CTF</Filter>
+    </ClCompile>
+    <ClCompile Include="Goal_AreaProtect.cpp">
+      <Filter>AI\goals\atomic\CTF</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -662,6 +668,9 @@
     </ClInclude>
     <ClInclude Include="DefendFlagGoal_Evaluator.h">
       <Filter>AI\goals\goal evaluation\CTF</Filter>
+    </ClInclude>
+    <ClInclude Include="Goal_AreaProtect.h">
+      <Filter>AI\goals\atomic\CTF</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

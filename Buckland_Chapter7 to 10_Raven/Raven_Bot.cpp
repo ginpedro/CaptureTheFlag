@@ -21,6 +21,8 @@
 
 #include "Debug/DebugConsole.h"
 
+#include "Request_HelpDefendFlag.h"
+
 //-------------------------- ctor ---------------------------------------------
 Raven_Bot::Raven_Bot(Raven_Game* world,Vector2D pos, int team):
 
@@ -244,6 +246,37 @@ bool Raven_Bot::HandleMessage(const Telegram& msg)
   switch(msg.Msg)
   {
 
+  case Msg_NewRequests://quando for notificado de novos requests no quadro
+	  {
+		  std::list<bbRequest*> req = GetWorld()->GetMyBoard(Team)->getUnacceptedRequests();
+		  std::list<bbRequest*>::const_iterator it = req.begin();
+		  for (it; it != req.end(); ++it)
+		  {
+			  if ((*it)->getOwner() != this)
+			  {
+				  int tp = (*it)->getType();
+				  switch(tp)
+				  {
+				  case help_defend_flag:
+					  {
+						  Request_HelpDefendFlag* rdf = static_cast<Request_HelpDefendFlag*>(*it);
+						  if (rdf->getNumRec() == -1) { rdf->setNumRec(0); }
+						  //calcular distancia para a bandeira
+						  rdf->calculatePrice(this,100,Health());//substituir o 100 pela distancia
+					  }
+					  break;
+				  default:break;
+				}
+			  }
+		  }
+
+
+		  return true;
+	  }
+  case Msg_HDFRequestAccepted:
+	  //desnecessario por enquanto
+	  //mensagem para quem foi escolhido para o request tratada no goal think
+	  return true;
   case Msg_IGotTheFlag:
 	debug_con << "someone got our flag. \n";
     //just return if already dead or spawning

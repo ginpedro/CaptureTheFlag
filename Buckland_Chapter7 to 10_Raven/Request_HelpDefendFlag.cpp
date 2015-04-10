@@ -14,5 +14,5 @@ void Request_HelpDefendFlag::calculatePrice(Raven_Bot* pBot, double distFlag,int
 	if ((b.cost == -1)||(rst < b.cost)){
 		setBestOffer(pBot, rst);
 	}
-	
+	setNumRec(getNumRec()+1);
 }

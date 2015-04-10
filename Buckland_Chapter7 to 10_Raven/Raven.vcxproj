@@ -214,6 +214,7 @@
     <ClCompile Include="Blackboard.cpp" />
     <ClCompile Include="DefendFlagGoal_Evaluator.cpp" />
     <ClCompile Include="GetFlagGoal_Evaluator.cpp" />
+    <ClCompile Include="Goal_AreaProtect.cpp" />
     <ClCompile Include="Goal_DefendFlag.cpp" />
     <ClCompile Include="Goal_GetFlag.cpp" />
     <ClCompile Include="main.cpp">
@@ -539,6 +540,7 @@
     <ClInclude Include="Blackboard.h" />
     <ClInclude Include="DefendFlagGoal_Evaluator.h" />
     <ClInclude Include="GetFlagGoal_Evaluator.h" />
+    <ClInclude Include="Goal_AreaProtect.h" />
     <ClInclude Include="Goal_DefendFlag.h" />
     <ClInclude Include="Goal_GetFlag.h" />
     <ClInclude Include="Raven_Bot.h" />

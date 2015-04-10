@@ -26,6 +26,7 @@
 #include "goals/Goal_Think.h"
 #include "goals/Raven_Goal_Types.h"
 
+#include "../Common/Debug/DebugConsole.h"
 
 
 //uncomment to write object creation/deletion to debug console
@@ -112,6 +113,125 @@ void Raven_Game::Update()
   BTeam1.Update();
 
   BTeam2.Update();
+  //ajeitar aqui, nao otimizado e baguncado
+  //enviar a mensagem para os bots dizendo que ha novos requests no quadro
+  
+  if (BTeam1.newReqAvaliable() || BTeam2.newReqAvaliable())
+  {debug_con << "novos requests disponiveis\n";
+	  std::list<Raven_Bot*> bots = GetAllBots();
+	  std::list<Raven_Bot*> bots1;
+	  std::list<Raven_Bot*> bots2;
+	  std::list<Raven_Bot*>::const_iterator cBot = bots.begin();
+	  for (cBot; cBot != bots.end(); ++cBot)
+	  {
+		if ((*cBot)->getTeam() == 1)
+		{ 
+			if ((*cBot)->isAlive()){
+				bots1.push_back(*cBot);}
+		}else
+		{
+			if ((*cBot)->isAlive()){
+				bots2.push_back(*cBot);}
+		}
+	  }
+	
+	  if (BTeam1.newReqAvaliable())
+	  {
+		  std::list<bbRequest*> reqtosend1 = BTeam1.getUnacceptedRequests();
+		  std::list<bbRequest*>::const_iterator it1 = reqtosend1.begin();
+
+		  std::list<Raven_Bot*>::const_iterator cBot1 = bots1.begin();
+		  for (cBot1; cBot1 != bots1.end(); ++cBot1)
+		  {			
+			Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+								SENDER_ID_IRRELEVANT,//sender
+								(*cBot1)->ID(),//receiver
+								Msg_NewRequests,//msg
+								NO_ADDITIONAL_INFO);
+		  }
+
+		  for (it1; it1 != reqtosend1.end(); ++it1)
+		  {
+			  (*it1)->setNumSent(bots1.size()-1);
+		  }
+	  }
+
+	  if (BTeam2.newReqAvaliable())
+	  {
+		  std::list<bbRequest*> reqtosend2 = BTeam2.getUnacceptedRequests();
+		  std::list<bbRequest*>::const_iterator it2 = reqtosend2.begin();
+
+		  std::list<Raven_Bot*>::const_iterator cBot2 = bots2.begin();
+		  for (cBot2; cBot2 != bots2.end(); ++cBot2)
+		  {
+			Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+								SENDER_ID_IRRELEVANT,//sender
+								(*cBot2)->ID(),//receiver
+								Msg_NewRequests,//msg
+								NO_ADDITIONAL_INFO);
+		  }
+
+		  for (it2; it2 != reqtosend2.end(); ++it2)
+		  {
+			  (*it2)->setNumSent(bots1.size()-1);
+		  }
+	  }
+	  
+  }
+  
+  //notificar bot que mandou o request e o bot escolhido
+  //time 1
+  std::list<bbRequest*> accepted1 = BTeam1.getNowRequests();
+  std::list<bbRequest*>::const_iterator a1 = accepted1.begin();
+  for (a1; a1 != accepted1.end(); ++a1)
+  {
+	  if ((*a1)->getStatus() == inprogress)//alguem foi escolhido
+	  {
+		  Raven_Bot* reqowner = (*a1)->getOwner();
+		  Raven_Bot* reqtarget = (*a1)->getBestOffer().sender;
+		  
+		  //notificar quem postou para que pare de tentar postar
+		  //void* content1 = reqtarget;
+		  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+                            SENDER_ID_IRRELEVANT,
+                            reqowner->ID(),
+                            Msg_HDFRequestAccepted,
+                            reqtarget);
+		  //notificar quem recebeu para que comece a fazer o requisitado
+		  //void* content2 = reqowner;
+		  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+                            reqowner->ID(),
+                            reqtarget->ID(),
+                            Msg_HelpDefendFlag,
+                            reqowner);
+	  }
+  }
+  //time2
+  std::list<bbRequest*> accepted2 = BTeam2.getNowRequests();
+  std::list<bbRequest*>::const_iterator a2 = accepted2.begin();
+  for (a2; a2 != accepted1.end(); ++a2)
+  {
+	  if ((*a2)->getStatus() == inprogress)//alguem foi escolhido
+	  {
+		  Raven_Bot* reqowner = (*a2)->getOwner();
+		  Raven_Bot* reqtarget = (*a2)->getBestOffer().sender;
+		  
+		  //notificar quem postou para que pare de tentar postar
+		  //void* content1 = reqtarget;
+		  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+                            SENDER_ID_IRRELEVANT,
+                            reqowner->ID(),
+                            Msg_HDFRequestAccepted,
+                            reqtarget);
+		  //notificar quem recebeu para que comece a fazer o requisitado
+		  //void* content2 = reqowner;
+		  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+                            reqowner->ID(),
+                            reqtarget->ID(),
+                            Msg_HelpDefendFlag,
+                            reqowner);
+	  }
+  }
 
   m_pGraveMarkers->Update();
 

@@ -32,7 +32,7 @@ void Trigger_Flagspot::Render()
   if (isActive())
   {
     gdi->BlackPen();
-	gdi->WhiteBrush();
+	gdi->HollowBrush();
 	gdi->Circle(Pos(),dangerAreaRadius);
 	if (m_iOwnerTeam == 1) {gdi->RedBrush();}
 	if (m_iOwnerTeam == 2) {gdi->BlueBrush();}

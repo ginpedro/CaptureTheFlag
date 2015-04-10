@@ -75,6 +75,10 @@ std::string GoalTypeToString::Convert(int gt)
 
     return "strafe";
 
+  case goal_spec_strafe:
+
+    return "area_protect";
+
   case goal_adjust_range:
 
     return "adjust_range";

@@ -8,6 +8,7 @@
 
 #include "goals/Goal_Wander.h"
 #include "goals/Goal_FollowPath.h"
+#include "Goal_AreaProtect.h"
 
 
 //int ItemTypeToGoalType(int gt)
@@ -53,7 +54,8 @@ void Goal_DefendFlag::Activate()
 	op_flag = 1;
   }*/
   m_pOwner->GetPathPlanner()->RequestPathToOpponentFlag(m_pOwner->getTeam());
-
+  m_pOwner->GetWorld()->AddRequest(m_pOwner,help_defend_flag);
+  
   //the bot may have to wait a few update cycles before a path is calculated
   //so for appearances sake it just wanders
   AddSubgoal(new Goal_Wander(m_pOwner));
@@ -94,15 +96,21 @@ bool Goal_DefendFlag::HandleMessage(const Telegram& msg)
     case Msg_PathReady:
 
       //clear any existing goals
-      RemoveAllSubgoals();
+      {
+	  RemoveAllSubgoals();
 
+	  std::list<PathEdge> path =  m_pOwner->GetPathPlanner()->GetPath();	  
+	  path.pop_back();
+	  AddSubgoal(new Goal_AreaProtect(m_pOwner));
       AddSubgoal(new Goal_FollowPath(m_pOwner,
-                                     m_pOwner->GetPathPlanner()->GetPath()));
+                                     path));
+	  
 
       //get the pointer to the item
       m_pGiverTrigger = static_cast<Raven_Map::TriggerType*>(msg.ExtraInfo);
 
-      return true; //msg handled
+	  return true;
+	  } //msg handled
 
 
     case Msg_NoPathAvailable:

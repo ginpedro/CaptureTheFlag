@@ -21,7 +21,10 @@ enum message_type
   Msg_OpenSesame,
   Msg_GunshotSound,
   Msg_UserHasRemovedBot,
-  Msg_IGotTheFlag
+  Msg_IGotTheFlag,
+  Msg_NewRequests,
+  Msg_HelpDefendFlag,
+  Msg_HDFRequestAccepted
 };
 
 //used for outputting debug info
@@ -64,6 +67,18 @@ inline std::string MessageToString(int msg)
   case Msg_IGotTheFlag:
 
     return "Msg_IGotTheFlag";
+
+  case Msg_NewRequests:
+
+    return "Msg_NewRequests";
+
+  case Msg_HelpDefendFlag:
+
+    return "Msg_HelpDefendFlag";
+
+  case Msg_HDFRequestAccepted:
+
+    return "Msg_HDFRequestAccepted";
 
   default:
 

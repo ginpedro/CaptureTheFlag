@@ -27,6 +27,7 @@
 #include "navigation/pathmanager.h"
 
 #include "Blackboard.h"
+#include "Request_HelpDefendFlag.h"
 
 class BaseGameEntity;
 class Raven_Projectile;
@@ -166,6 +167,24 @@ public:
   PathManager<Raven_PathPlanner>* const    GetPathManager(){return m_pPathManager;}
   int                                      GetNumBots()const{return m_Bots.size();}
 
+  void AddRequest(Raven_Bot* pBot,int reqtype)
+  {
+	  if (pBot->getTeam() == 1)
+	  {
+		  if (reqtype == help_defend_flag)
+		  {
+			  if (BTeam1.notPresent(help_defend_flag)){
+				  BTeam1.postRequest(new Request_HelpDefendFlag(pBot));}
+		  }
+	  }else
+	  {
+		  if (reqtype == help_defend_flag)
+		  {
+			  if (BTeam2.notPresent(help_defend_flag)){
+				  BTeam2.postRequest(new Request_HelpDefendFlag(pBot));}
+		  }
+	  }
+  }
   
   void  TagRaven_BotsWithinViewRange(BaseGameEntity* pRaven_Bot, double range)
               {TagNeighbors(pRaven_Bot, m_Bots, range);}  
