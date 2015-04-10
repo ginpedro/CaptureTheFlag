@@ -28,7 +28,7 @@ private:
 private:
   
   GoalEvaluators  m_Evaluators;
-
+  bool deac;
 public:
 
   Goal_Think(Raven_Bot* pBot);
@@ -61,6 +61,8 @@ public:
   //this renders the evaluations (goal scores) at the specified location
   void  RenderEvaluations(int left, int top)const;
   void  Render();
+
+  void  tempdeac() {deac = true;}
 
   bool  HandleMessage(const Telegram& msg);
 };
