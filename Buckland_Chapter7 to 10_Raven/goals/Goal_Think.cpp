@@ -26,6 +26,8 @@
 #include "Messaging/Telegram.h"
 #include "../Raven_Messages.h"
 
+#include "../../Common/Debug/DebugConsole.h"
+
 Goal_Think::Goal_Think(Raven_Bot* pBot):Goal_Composite<Raven_Bot>(pBot, goal_think)
 {
   
@@ -244,6 +246,7 @@ bool Goal_Think::HandleMessage(const Telegram& msg)
 	case Msg_HelpDefendFlag:		
 		{
 		Raven_Bot* sender = static_cast<Raven_Bot*>(msg.ExtraInfo);//sem uso por enquanto
+		debug_con << m_pOwner->ID() << " recebeu o request de " <<  sender->ID() <<"\n";
 		AddGoal_DefendFlag();
 		}
 		return true;
