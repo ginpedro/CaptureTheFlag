@@ -191,12 +191,12 @@ void Goal_Think::AddGoal_GetFlag()
   }
 }
 
-void Goal_Think::AddGoal_DefendFlag()
+void Goal_Think::AddGoal_DefendFlag(bool ctype)
 {
   if (notPresent(goal_defend_flag))
   {
     RemoveAllSubgoals();
-    AddSubgoal( new Goal_DefendFlag(m_pOwner));
+    AddSubgoal( new Goal_DefendFlag(m_pOwner,ctype));
   }
 }
 
@@ -250,13 +250,8 @@ bool Goal_Think::HandleMessage(const Telegram& msg)
 		{
 		Raven_Bot* sender = static_cast<Raven_Bot*>(msg.ExtraInfo);//sem uso por enquanto
 		debug_con << m_pOwner->ID() << " recebeu o request de " <<  sender->ID() << " t:"<< sender->getTeam()<<"\n";
-		debug_con << "frontmost subgoal " << m_SubGoals.front()->GetType() << "\n";
-			/*std::list<Goal<Raven_Bot>*>::iterator curG;
-			for (curG=m_SubGoals.begin(); curG != m_SubGoals.end(); ++curG)
-			{
-			 (*curG)->Render();
-			}*/
-		AddGoal_DefendFlag();
+		debug_con << "frontmost subgoal " << m_SubGoals.front()->GetType() << "\n";			
+		AddGoal_DefendFlag(false);
 		tempdeac();
 		debug_con << "frontmost subgoal " <<  m_SubGoals.front()->GetType() << "\n";
 		//debug_con << m_pOwner->ID() << " removeu subgoals?\n";

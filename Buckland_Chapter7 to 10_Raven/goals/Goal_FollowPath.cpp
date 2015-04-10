@@ -6,7 +6,7 @@
 #include "Goal_NegotiateDoor.h"
 #include "misc/cgdi.h"
 
-
+#include "../goals/Goal_Think.h"
 
 //------------------------------ ctor -----------------------------------------
 //-----------------------------------------------------------------------------
@@ -86,6 +86,11 @@ int Goal_FollowPath::Process()
   if (m_iStatus == completed && !m_Path.empty())
   {
     Activate(); 
+  }
+  if (m_iStatus == completed && m_Path.empty())
+  {//TESTE:se o bot acompanhar o outro com o request de defendflag, reativar o arbitrate
+	  //"quando chegar na bandeira, se a urgencia for grande ele deve decidir proteger a bandeira"
+	  m_pOwner->GetBrain()->reacifdeac();
   }
 
   return m_iStatus;

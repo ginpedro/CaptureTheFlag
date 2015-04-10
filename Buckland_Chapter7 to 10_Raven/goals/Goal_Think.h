@@ -53,7 +53,7 @@ public:
   void AddGoal_AttackTarget();
 
   void AddGoal_GetFlag();
-  void AddGoal_DefendFlag();
+  void AddGoal_DefendFlag(bool ctype);
 
   //this adds the MoveToPosition goal to the *back* of the subgoal list.
   void QueueGoal_MoveToPosition(Vector2D pos);
@@ -63,6 +63,7 @@ public:
   void  Render();
 
   void  tempdeac() {deac = true;}
+  void  reacifdeac() {if (deac) {deac = false;}}
 
   bool  HandleMessage(const Telegram& msg);
 };

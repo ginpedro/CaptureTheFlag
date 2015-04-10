@@ -17,7 +17,7 @@ class Goal_DefendFlag : public Goal_Composite<Raven_Bot>
 private:
 
 //  int                     m_iItemToGet;
-
+	bool ctype; //true se foi colocado pelo arbitrate, false se foi por request
   Trigger<Raven_Bot>*     m_pGiverTrigger;
 
   //true if a path to the item has been formulated
@@ -29,8 +29,9 @@ private:
 
 public:
 
-  Goal_DefendFlag(Raven_Bot* pBot):Goal_Composite<Raven_Bot>(pBot,
+  Goal_DefendFlag(Raven_Bot* pBot,bool calltype):Goal_Composite<Raven_Bot>(pBot,
                                                    goal_defend_flag),
+												   ctype(calltype),
                                 //m_iItemToGet(item),
                                 m_pGiverTrigger(0),
                                 m_bFollowingPath(false)

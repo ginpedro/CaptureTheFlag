@@ -10,7 +10,7 @@
 #include "debug/DebugConsole.h"
 #include "misc/cgdi.H"
 
-
+#include "Raven_SensoryMemory.h"
 //------------------------------- Activate ------------------------------------
 //-----------------------------------------------------------------------------
 void Goal_AreaProtect::Activate()
@@ -61,14 +61,16 @@ int Goal_AreaProtect::Process()
   ActivateIfInactive(); 
 
   //if target goes out of view terminate
-  /*if (!m_pOwner->GetTargetSys()->isTargetWithinFOV())
+  //if (!m_pOwner->GetTargetSys()->isTargetWithinFOV())
+  //TESTE: parar de proteger a area se achar que nao ha mais oponentes por perto
+  if (m_pOwner->GetSensoryMem()->GetListOfRecentlySensedOpponents().size() <= 0)
   {
     m_iStatus = completed;
-  }*/
+  }
 
   //else if bot reaches the target position set status to inactive so the goal 
   //is reactivated on the next update-step
-  /*else*/ if (m_pOwner->isAtPosition(m_vStrafeTarget))
+  else if (m_pOwner->isAtPosition(m_vStrafeTarget))
   {
     m_iStatus = inactive;
   }

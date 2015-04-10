@@ -54,7 +54,8 @@ void Goal_DefendFlag::Activate()
 	op_flag = 1;
   }*/
   m_pOwner->GetPathPlanner()->RequestPathToOpponentFlag(m_pOwner->getTeam());
-  m_pOwner->GetWorld()->AddRequest(m_pOwner,help_defend_flag);
+  if (ctype){
+	  m_pOwner->GetWorld()->AddRequest(m_pOwner,help_defend_flag);}
   
   //the bot may have to wait a few update cycles before a path is calculated
   //so for appearances sake it just wanders

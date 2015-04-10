@@ -47,7 +47,7 @@ double DefendFlagGoal_Evaluator::CalculateDesirability(Raven_Bot* pBot)
 //-----------------------------------------------------------------------------
 void DefendFlagGoal_Evaluator::SetGoal(Raven_Bot* pBot)
 {
-  pBot->GetBrain()->AddGoal_DefendFlag();
+  pBot->GetBrain()->AddGoal_DefendFlag(true);
 }
 
 //-------------------------- RenderInfo ---------------------------------------
