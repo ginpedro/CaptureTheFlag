@@ -62,7 +62,7 @@ public:
   void  RenderEvaluations(int left, int top)const;
   void  Render();
 
-  //bool  HandleMessage(const Telegram& msg);
+  bool  HandleMessage(const Telegram& msg);
 };
 
 
