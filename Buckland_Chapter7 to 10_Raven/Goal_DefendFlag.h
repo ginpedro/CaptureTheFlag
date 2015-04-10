@@ -6,7 +6,7 @@
 #include "goals/Raven_Goal_Types.h"
 #include "Raven_Bot.h"
 #include "triggers/trigger.h"
-
+#include "../Common/Debug/DebugConsole.h"
 
 //helper function to change an item type enumeration into a goal type
 //int ItemTypeToGoalType(int gt);
@@ -43,7 +43,9 @@ public:
 
   bool HandleMessage(const Telegram& msg);
 
-  void Terminate(){m_iStatus = completed;}
+  void Terminate(){debug_con << m_pOwner->ID() << " deletando goal defend flag \n";
+	  m_iStatus = completed;
+  }
 };
 
 

@@ -27,10 +27,11 @@
 #include "../Raven_Messages.h"
 
 #include "../../Common/Debug/DebugConsole.h"
+#include "../Raven_Bot.h"
 
 Goal_Think::Goal_Think(Raven_Bot* pBot):Goal_Composite<Raven_Bot>(pBot, goal_think)
 {
-  
+  deac = false;
   //these biases could be loaded in from a script on a per bot basis
   //but for now we'll just give them some random values
   const double LowRangeOfBias = 0.5;
@@ -112,7 +113,7 @@ void Goal_Think::Arbitrate()
 {
   double best = 0;
   Goal_Evaluator* MostDesirable = 0;
-
+  
   //iterate through all the evaluators to see which produces the highest score
   GoalEvaluators::iterator curDes = m_Evaluators.begin();
   for (curDes; curDes != m_Evaluators.end(); ++curDes)
@@ -127,8 +128,10 @@ void Goal_Think::Arbitrate()
   }
 
   assert(MostDesirable && "<Goal_Think::Arbitrate>: no evaluator selected");
-
+  if (!deac)
+  {
   MostDesirable->SetGoal(m_pOwner);
+  }
 }
 
 
@@ -181,7 +184,7 @@ void Goal_Think::AddGoal_AttackTarget()
 
 void Goal_Think::AddGoal_GetFlag()
 {
-	if (notPresent(goal_get_flag))
+  if (notPresent(goal_get_flag))
   {
     RemoveAllSubgoals();
     AddSubgoal( new Goal_GetFlag(m_pOwner));
@@ -190,7 +193,7 @@ void Goal_Think::AddGoal_GetFlag()
 
 void Goal_Think::AddGoal_DefendFlag()
 {
-	if (notPresent(goal_defend_flag))
+  if (notPresent(goal_defend_flag))
   {
     RemoveAllSubgoals();
     AddSubgoal( new Goal_DefendFlag(m_pOwner));
@@ -246,8 +249,17 @@ bool Goal_Think::HandleMessage(const Telegram& msg)
 	case Msg_HelpDefendFlag:		
 		{
 		Raven_Bot* sender = static_cast<Raven_Bot*>(msg.ExtraInfo);//sem uso por enquanto
-		debug_con << m_pOwner->ID() << " recebeu o request de " <<  sender->ID() <<"\n";
+		debug_con << m_pOwner->ID() << " recebeu o request de " <<  sender->ID() << " t:"<< sender->getTeam()<<"\n";
+		debug_con << "frontmost subgoal " << m_SubGoals.front()->GetType() << "\n";
+			/*std::list<Goal<Raven_Bot>*>::iterator curG;
+			for (curG=m_SubGoals.begin(); curG != m_SubGoals.end(); ++curG)
+			{
+			 (*curG)->Render();
+			}*/
 		AddGoal_DefendFlag();
+		tempdeac();
+		debug_con << "frontmost subgoal " <<  m_SubGoals.front()->GetType() << "\n";
+		//debug_con << m_pOwner->ID() << " removeu subgoals?\n";
 		}
 		return true;
   //  case Msg_PathReady:
