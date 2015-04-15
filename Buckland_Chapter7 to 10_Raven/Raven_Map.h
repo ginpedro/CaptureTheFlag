@@ -28,6 +28,11 @@
 class BaseGameEntity;
 class Raven_Door;
 
+struct rectMapRegion
+{
+	int x0,y0,xsize,ysize;
+	Vector2D center;
+};
 
 class Raven_Map
 {
@@ -41,7 +46,8 @@ public:
   typedef TriggerSystem<TriggerType>                TriggerSystem;
   
 private:
- 
+	std::list<rectMapRegion> regions;
+
   //the walls that comprise the current map's architecture. 
   std::vector<Wall2D*>                m_Walls;
 
@@ -54,9 +60,12 @@ private:
   //it will appear at a randomly selected point chosen from this vector
   std::vector<Vector2D>              m_SpawnPoints;
 
-  //NEW: temp
-  std::list<Vector2D>			 team1spawn;
-  std::list<Vector2D>			 team2spawn;
+  //NEW: Guardar referencias a pontos importantes.
+  std::list<Vector2D>			 team1spawn;//pontos de spawn team 1
+  std::list<Vector2D>			 team2spawn;//pontos de spawn team 2
+  Vector2D						 team1flag;//ponto da bandeira team 1
+  Vector2D						 team2flag;//ponto da bandeira team 2
+
 
   //a map may contain a number of sliding doors.
   std::vector<Raven_Door*>           m_Doors;

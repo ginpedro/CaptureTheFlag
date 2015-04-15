@@ -178,9 +178,9 @@ void Raven_Map::AddFlag(std::ifstream& in)
 
   node.SetExtraInfo(fs);
 
-  //temp
-  //if (fs->GetTeamOwner() == 1){ team1spawn = fs->Pos(); };
-  //if (fs->GerTeamOwner() == 2){ team2spawn = fs->Pos(); };
+  //guardar posicao das bandeiras
+  if (fs->GetTeamOwner() == 1){ team1flag = fs->Pos(); };
+  if (fs->GetTeamOwner() == 2){ team2flag = fs->Pos(); };
 
   //register the entity 
   EntityMgr->RegisterEntity(fs);
@@ -231,6 +231,26 @@ bool Raven_Map::LoadMap(const std::string& filename)
   //load in the map size and adjust the client window accordingly
   in >> m_iSizeX >> m_iSizeY;
 
+  //NEW: Definir regioes 3x3
+
+  int xsize = m_iSizeX/3;
+  int ysize = (m_iSizeY-50)/3;
+  int xdef = xsize/2;
+  int ydef = ysize/2;
+  for (int si = 0; si < 3; si++)
+  {
+	for (int sj = 0; sj < 3; sj++)
+	{
+		rectMapRegion t;
+		t.x0 = si*xsize;
+		t.y0 = sj*ysize;
+		t.xsize = (si*xsize)+xsize;
+		t.ysize = (sj*ysize)+ysize;
+		t.center = Vector2D((si*xsize)+xdef,(sj*ysize)+ydef);
+		regions.push_back(t);
+	}
+  }
+
 #ifdef LOG_CREATIONAL_STUFF
     debug_con << "Partitioning navgraph nodes..." << "";
 #endif
@@ -245,7 +265,7 @@ bool Raven_Map::LoadMap(const std::string& filename)
   extern char* g_szWindowClassName;
   HWND hwnd = FindWindow(g_szWindowClassName, g_szApplicationName);
   const int ExtraHeightRqdToDisplayInfo = 50;
-  ResizeWindow(hwnd, m_iSizeX, m_iSizeY+ExtraHeightRqdToDisplayInfo);
+  ResizeWindow(hwnd, m_iSizeX, m_iSizeY);//+ExtraHeightRqdToDisplayInfo);
 
 #ifdef LOG_CREATIONAL_STUFF
     debug_con << "Loading map..." << "";
@@ -435,5 +455,15 @@ void Raven_Map::Render()
     gdi->GreyBrush();
     gdi->GreyPen();
     gdi->Circle(*curSp, 7);
+  }
+  //NEW: tests -> desenhar regioes  
+  gdi->HollowBrush();
+  gdi->RedPen();
+
+  std::list<rectMapRegion>::const_iterator it = regions.begin();
+  for (it; it != regions.end();++it)
+  {
+	  gdi->Circle((*it).center,5);
+	  gdi->Rect((*it).x0,(*it).y0,(*it).xsize,(*it).ysize);
   }
 }
