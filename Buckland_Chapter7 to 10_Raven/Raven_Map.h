@@ -155,6 +155,18 @@ public:
 		return ret;
 	}
   }
+  Vector2D			 GetFlagpoint(int team)
+  {
+	if (team == 1)
+	{
+		return team1flag;
+	}else
+	{
+		return team2flag;
+	}
+  }
+  std::list<rectMapRegion> getRegions() { return regions; };
+  
 };
 
 

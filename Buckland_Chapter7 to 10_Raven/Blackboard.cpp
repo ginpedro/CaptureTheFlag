@@ -1,10 +1,61 @@
 #include "Blackboard.h"
 #include "../Common/Debug/DebugConsole.h"
 
+#include "Raven_Game.h"
+
 
 Blackboard::Blackboard()
 {
 	newreqAvaliable = false;	
+}
+
+void Blackboard::SetConf(int team, Raven_Game* world)
+{
+	newreqAvaliable = false;
+	std::list<Raven_Bot*> tmp = world->GetAllBots();
+	for (std::list<Raven_Bot*>::const_iterator it = tmp.begin(); it != tmp.end(); ++it)
+	{
+		if ((*it)->getTeam() == team)
+		{
+			bots.push_back(*it);
+		}else
+		{
+			ebots.push_back(*it);
+		}
+	}
+	std::list<rectMapRegion> reg = world->GetMap()->getRegions();
+	int eteam;
+	if (team == 1) {eteam = 2;} else {eteam == 1;}
+	Vector2D basepoint = world->GetMap()->GetTeamSpawnpoint(team);
+	Vector2D flagpoint = world->GetMap()->GetFlagpoint(team);
+	Vector2D ebasepoint = world->GetMap()->GetTeamSpawnpoint(eteam);
+	Vector2D eflagpoint = world->GetMap()->GetFlagpoint(eteam);
+	for (std::list<rectMapRegion>::const_iterator it = reg.begin(); it != reg.end(); ++it)
+	{
+		if (regionContains(*it,basepoint))
+		{
+			base = *it;//regiao da base
+		}
+		if (regionContains(*it,flagpoint))
+		{
+			flag = *it;//regiao da flag
+		}	
+		if (regionContains(*it,ebasepoint))
+		{
+			ebase = *it;//regiao da base inimiga
+		}
+		if (regionContains(*it,eflagpoint))
+		{
+			eflag = *it;//regiao da flag inimiga
+		}
+	}
+	//for (std::list<rectMapRegion>::const_iterator it = reg.begin(); it != reg.end(); ++it)
+	//{
+	//	//if (regionContains(*it,Vector2D(base.x0+1,) {side = *it;}
+	//	
+	//}
+
+
 }
 
 void Blackboard::postRequest(bbRequest* r) {
@@ -90,4 +141,23 @@ bool Blackboard::notPresent(int reqType)
 	}    
   }
   return true;
+}
+
+void Blackboard::Arbitrate()
+{
+	/*
+	for (std::list<Raven_Bot*>::const_iterator it = bots.begin(); it != bots.end(); ++it)
+	{
+		if (!regionContains(base,(*it)->Pos()))
+		{
+			
+		}
+	}*/
+	//pegar codigo dos goal evaluators (que serao usados) e adicionar outros calculos
+	//calcular o valor de desirability de um goal para um bot, para todos os bots
+	//pode-se levar em consideracao os goals de outros bots e requests no quadro para ajudar o calculo
+	//usar o goalthink do bot (funcao set goal do goal evaluator) para setar o novo goal
+	
+
+
 }

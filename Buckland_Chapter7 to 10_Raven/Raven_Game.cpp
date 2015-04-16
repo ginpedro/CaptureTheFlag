@@ -44,6 +44,8 @@ Raven_Game::Raven_Game():m_pSelectedBot(NULL),
 {
   //load in the default map
   LoadMap(script->GetString("StartMap"));
+  BTeam1.SetConf(1,this);
+  BTeam2.SetConf(2,this);
 }
 
 
