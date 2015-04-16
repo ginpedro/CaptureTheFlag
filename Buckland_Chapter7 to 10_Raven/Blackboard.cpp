@@ -25,7 +25,7 @@ void Blackboard::SetConf(int team, Raven_Game* world)
 	}
 	std::list<rectMapRegion> reg = world->GetMap()->getRegions();
 	int eteam;
-	if (team == 1) {eteam = 2;} else {eteam == 1;}
+	if (team == 1) {eteam = 2;} else {eteam = 1;}
 	Vector2D basepoint = world->GetMap()->GetTeamSpawnpoint(team);
 	Vector2D flagpoint = world->GetMap()->GetFlagpoint(team);
 	Vector2D ebasepoint = world->GetMap()->GetTeamSpawnpoint(eteam);
@@ -99,12 +99,12 @@ void Blackboard::Update()
 	if (!reqList.empty())
 	{
 		for (std::list<bbRequest*>::iterator it = reqList.begin(); it != reqList.end(); ++it) {
-			if ((*it)->getUrgency() == failed)
-			{//REMOVE NAO ESTA DANDO CERTO
-				//reqList.remove(*it);
-				//debug_con << "removido request, " << reqList.size() << " no quadro \n";
-			}
-			if ((*it)->getUrgency() != now && (*it)->getUrgency() != failed)
+			//if ((*it)->getStatus() == failed)
+			//{//REMOVE NAO ESTA DANDO CERTO
+			//	//reqList.remove(*it);
+			//	//debug_con << "removido request, " << reqList.size() << " no quadro \n";
+			//}
+			if ((*it)->getUrgency() != now /*&& (*it)->getStatus() != failed*/)
 			{
 				(*it)->setUrgency((*it)->getUrgency()-1);
 				debug_con << "--request de urgencia " << (*it)->getUrgency() << " no quadro, estado "<< (*it)->getStatus() << "\n";
@@ -115,13 +115,15 @@ void Blackboard::Update()
 			}
 			else
 			{
-				if (((*it)->getBestOffer().cost != -1) && ((*it)->getStatus() == unaccepted) && ((*it)->getUrgency() == now))
+				if (((*it)->getBestOffer().cost != -1) && ((*it)->getStatus() == unaccepted)/* && ((*it)->getUrgency() == now)*/)
 				{//se alguem ja ofereceu os servicos e o prazo esta no limite, pegue o que estiver registrado
 					(*it)->setStatus(inprogress);	
 					debug_con << "--request: custo " << (*it)->getBestOffer().cost << " no quadro, estado "<< (*it)->getStatus() << "\n";
 				}else
-				{//se ninguem aceitou, marque como falha
-					(*it)->setUrgency(failed);					
+				{//se ninguem aceitou, marque como falha <--- remover
+					//(*it)->setStatus(failed);
+					//reqList.erase(it);
+					//TODO: MARCAR PARA REMOVER
 				}
 				
 			}
@@ -145,14 +147,11 @@ bool Blackboard::notPresent(int reqType)
 
 void Blackboard::Arbitrate()
 {
-	/*
+	
 	for (std::list<Raven_Bot*>::const_iterator it = bots.begin(); it != bots.end(); ++it)
 	{
-		if (!regionContains(base,(*it)->Pos()))
-		{
-			
-		}
-	}*/
+		
+	}
 	//pegar codigo dos goal evaluators (que serao usados) e adicionar outros calculos
 	//calcular o valor de desirability de um goal para um bot, para todos os bots
 	//pode-se levar em consideracao os goals de outros bots e requests no quadro para ajudar o calculo
