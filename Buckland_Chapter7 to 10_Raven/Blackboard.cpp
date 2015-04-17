@@ -2,6 +2,7 @@
 #include "../Common/Debug/DebugConsole.h"
 
 #include "Raven_Game.h"
+#include "goals\Goal_Think.h"
 
 
 Blackboard::Blackboard()
@@ -145,14 +146,45 @@ bool Blackboard::notPresent(int reqType)
 
 void Blackboard::Arbitrate()
 {
-	/*
+
+	double CalcDefFlag = 0;
+	double CalcAtkFlag = 0;
+
+	
 	for (std::list<Raven_Bot*>::const_iterator it = bots.begin(); it != bots.end(); ++it)
 	{
-		if (!regionContains(base,(*it)->Pos()))
-		{
-			
+		//if (!regionContains(base,(*it)->Pos()))
+		//{
+		//	
+		//}
+
+		/* CALCULATE DEFFEND FLAG */
+
+		if (!(*it)->GetBrain()->DoingRequest()) {
+			std::list<bbRequest*> NL = getNowRequests();
+			for (std::list<bbRequest*>::iterator reqit = NL.begin(); reqit != NL.end(); ++reqit) {
+				if ((*reqit)->getBestOffer().sender == (*it)) {
+					(*it)->GetBrain()->AcepptRequest();
+					switch ((*reqit)->getType()) {
+						case help_defend_flag:
+							(*it)->GetBrain()->AddGoal_DefendFlag(false);
+							break;
+						case help_capture_flag:
+							(*it)->GetBrain()->AddGoal_GetFlag();
+							break;
+						default: {;}
+					}
+					break;
+				}
+			}
+
+			if (!(*it)->GetBrain()->DoingRequest()) {
+				//realizar o calculo dos goals evaluators aqui
+			}
+
 		}
-	}*/
+
+	}
 	//pegar codigo dos goal evaluators (que serao usados) e adicionar outros calculos
 	//calcular o valor de desirability de um goal para um bot, para todos os bots
 	//pode-se levar em consideracao os goals de outros bots e requests no quadro para ajudar o calculo

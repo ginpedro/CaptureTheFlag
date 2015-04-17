@@ -32,6 +32,7 @@
 Goal_Think::Goal_Think(Raven_Bot* pBot):Goal_Composite<Raven_Bot>(pBot, goal_think)
 {
   deac = false;
+  takingRequest = false;
   //these biases could be loaded in from a script on a per bot basis
   //but for now we'll just give them some random values
   const double LowRangeOfBias = 0.5;

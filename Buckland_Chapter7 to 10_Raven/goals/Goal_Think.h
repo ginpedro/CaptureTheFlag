@@ -29,6 +29,9 @@ private:
   
   GoalEvaluators  m_Evaluators;
   bool deac;
+
+  bool takingRequest;
+
 public:
 
   Goal_Think(Raven_Bot* pBot);
@@ -66,6 +69,10 @@ public:
   void  reacifdeac() {if (deac) {deac = false;}}
 
   bool  HandleMessage(const Telegram& msg);
+
+  bool DoingRequest() {return takingRequest;}
+  void AcepptRequest() {takingRequest = true;}
+  void TerminateRequest() {takingRequest = false;}
 };
 
 
