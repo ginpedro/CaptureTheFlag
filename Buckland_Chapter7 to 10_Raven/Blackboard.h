@@ -25,6 +25,9 @@ private:
 	//rectMapRegion eside;
 	int toErase;
 
+	int Team;
+	Raven_Game* pWorld;
+
 public:
 	Blackboard();
 	void postRequest(bbRequest* req);//adicionar request

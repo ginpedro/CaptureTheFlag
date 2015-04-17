@@ -13,6 +13,9 @@ Blackboard::Blackboard()
 
 void Blackboard::SetConf(int team, Raven_Game* world)
 {
+	Team = team;
+	pWorld = world;
+
 	newreqAvaliable = false;
 	std::list<Raven_Bot*> tmp = world->GetAllBots();
 	for (std::list<Raven_Bot*>::const_iterator it = tmp.begin(); it != tmp.end(); ++it)
@@ -185,10 +188,38 @@ bool Blackboard::notPresent(int reqType)
 void Blackboard::Arbitrate()
 {
 
-	double CalcDefFlag = 0;
-	double CalcAtkFlag = 0;
+	double DefFlag = 0.25;
 
-	
+	Vector2D flagPos = pWorld->GetMap()->GetFlagpoint(Team);
+	Vector2D eFlagPos;
+
+	bool got_eflagpos = false;
+	double MostDangerDist = -1;
+	int numDangerEnemy = 0;
+	for (std::list<Raven_Bot*>::iterator enemyIt = ebots.begin(); enemyIt != ebots.end(); ++enemyIt) {
+		if (regionContains(flagdangerzone,(*enemyIt)->Pos())) {
+			numDangerEnemy++;
+			double vd = Vec2DDistance(flagPos, (*enemyIt)->Pos());
+			if ((vd < MostDangerDist)||(MostDangerDist < 0)) {
+				MostDangerDist = vd;
+			}
+			if (!got_eflagpos) {
+				eFlagPos = (*enemyIt)->GetWorld()->GetMap()->GetFlagpoint((*enemyIt)->getTeam());
+				got_eflagpos = true;
+			}
+		}
+	}
+
+	circleMapRegion spDefendZone = flagdangerzone;
+	spDefendZone.radius /= 2;
+
+	int numDefenders = 0;
+	for (std::list<Raven_Bot*>::iterator defIt = bots.begin(); defIt != bots.end(); ++defIt) {
+		if (regionContains(spDefendZone,(*defIt)->Pos())) {
+			numDefenders++;
+		}
+	}
+
 	for (std::list<Raven_Bot*>::const_iterator it = bots.begin(); it != bots.end(); ++it)
 	{
 		//if (!regionContains(base,(*it)->Pos()))
@@ -201,12 +232,26 @@ void Blackboard::Arbitrate()
 
 			/* CALCULATE DEFFEND FLAG */
 
-			Vector2D flagPos = (*it)->GetWorld()->GetMap()->GetFlagpoint((*it)->getTeam());
+			bool isNearFlag = regionContains(flagdangerzone,(*it)->Pos());
+			bool isNearEFlag = regionContains(eflagdangerzone,(*it)->Pos());
+			double dist = Vec2DDistance((*it)->Pos(), eFlagPos);
 
-			double dist = Vec2DDistance((*it)->Pos(), flagPos);
+			if (isNearFlag) {
+				DefFlag += (numDangerEnemy/max(1,numDefenders))*0.1 + min(0.25, ((*it)->Health())*0.005);
+			}
+			else if (isNearEFlag) {
+				DefFlag = (1 - (MostDangerDist - dist)/eflagdangerzone.radius - min(0.25, ((*it)->Health())*0.005))/2;
+			}
 
-			double DangerDist = 300; //mudar para valor oferecido pela flag
+			if (DefFlag < 0) {DefFlag = 0;}
+			else if (DefFlag > 1) {DefFlag = 1;}
 
+			if (DefFlag > 0.5) {
+				(*it)->GetBrain()->AddGoal_DefendFlag(true);
+			}
+			else {
+				(*it)->GetBrain()->AddGoal_GetFlag();
+			}
 
 		}
 	}
