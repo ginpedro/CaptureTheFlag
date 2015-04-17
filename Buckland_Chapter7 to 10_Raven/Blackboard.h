@@ -21,6 +21,7 @@ private:
 	rectMapRegion ebase;
 	rectMapRegion eflag;
 	//rectMapRegion eside;
+	int toErase;
 
 public:
 	Blackboard();

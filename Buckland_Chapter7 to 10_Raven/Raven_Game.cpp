@@ -235,6 +235,9 @@ void Raven_Game::Update()
 	  }
   }
 
+  BTeam1.Arbitrate();
+  BTeam2.Arbitrate();
+
   m_pGraveMarkers->Update();
 
   //get any player keyboard input

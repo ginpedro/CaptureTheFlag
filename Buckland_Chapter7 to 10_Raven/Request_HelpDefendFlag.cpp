@@ -15,4 +15,6 @@ void Request_HelpDefendFlag::calculatePrice(Raven_Bot* pBot, double distFlag,int
 		setBestOffer(pBot, rst);
 	}
 	setNumRec(getNumRec()+1);
+
+	if (b.cost == -1) { setStatus(accepted); }
 }
