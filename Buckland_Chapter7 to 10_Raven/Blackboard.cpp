@@ -237,7 +237,7 @@ void Blackboard::Arbitrate()
 			double dist = Vec2DDistance((*it)->Pos(), eFlagPos);
 
 			if (isNearFlag) {
-				DefFlag += (numDangerEnemy/max(1,numDefenders))*0.1 + min(0.25, ((*it)->Health())*0.005);
+				DefFlag += (numDangerEnemy - numDefenders)*0.1 + min(0.25, ((*it)->Health())*0.005);
 			}
 			else if (isNearEFlag) {
 				DefFlag = (1 - (MostDangerDist - dist)/eflagdangerzone.radius - min(0.25, ((*it)->Health())*0.005))/2;
