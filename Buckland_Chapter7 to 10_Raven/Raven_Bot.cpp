@@ -262,7 +262,8 @@ bool Raven_Bot::HandleMessage(const Telegram& msg)
 						  Request_HelpDefendFlag* rdf = static_cast<Request_HelpDefendFlag*>(*it);
 						  if (rdf->getNumRec() == -1) { rdf->setNumRec(0); }
 						  //calcular distancia para a bandeira
-						  //rdf->calculatePrice(this,100,Health());//substituir o 100 pela distancia
+						  double dist = abs(Vec2DDistance(Pos(),m_pWorld->GetMap()->GetFlagpoint(Team)));
+						  rdf->calculatePrice(this,dist,Health());
 					  }
 					  break;
 				  default:break;

@@ -11,6 +11,8 @@
 #include "misc/cgdi.H"
 
 #include "Raven_SensoryMemory.h"
+
+#include "goals/Goal_Think.h"
 //------------------------------- Activate ------------------------------------
 //-----------------------------------------------------------------------------
 void Goal_AreaProtect::Activate()
@@ -66,6 +68,11 @@ int Goal_AreaProtect::Process()
   if (m_pOwner->GetSensoryMem()->GetListOfRecentlySensedOpponents().size() <= 0)
   {
     m_iStatus = completed;
+	bool isRequested = m_pOwner->GetBrain()->DoingRequest();
+	if (isRequested)
+	{
+		m_pOwner->GetBrain()->TerminateRequest();
+	}
   }
 
   //else if bot reaches the target position set status to inactive so the goal 

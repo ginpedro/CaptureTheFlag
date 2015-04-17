@@ -3,6 +3,7 @@
 #pragma warning (disable:4786)
 
 #include "Raven_Bot.h"
+#include "goals/Goal_Think.h"
 
 struct offer
 {
@@ -41,6 +42,15 @@ public:
 	int getNumRec(){return numRec;}
 	void setStatus(int st){status = st;}
 	int getStatus(){return status;}
+	bool verifyCompletion()
+	{
+		if (getStatus() == inprogress)
+		{
+			bool status = getBestOffer().sender->GetBrain()->DoingRequest();			
+			return !status;
+		}else
+			return false;
+	}
 	//double calculate();
 };
 

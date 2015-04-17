@@ -249,12 +249,12 @@ bool Goal_Think::HandleMessage(const Telegram& msg)
 
 	case Msg_HelpDefendFlag:		
 		{
-		Raven_Bot* sender = static_cast<Raven_Bot*>(msg.ExtraInfo);//sem uso por enquanto
-		debug_con << m_pOwner->ID() << " recebeu o request de " <<  sender->ID() << " t:"<< sender->getTeam()<<"\n";
-		debug_con << "frontmost subgoal " << m_SubGoals.front()->GetType() << "\n";			
-		AddGoal_DefendFlag(false);
-		tempdeac();
-		debug_con << "frontmost subgoal " <<  m_SubGoals.front()->GetType() << "\n";
+		//Raven_Bot* sender = static_cast<Raven_Bot*>(msg.ExtraInfo);//sem uso por enquanto
+		//debug_con << m_pOwner->ID() << " recebeu o request de " <<  sender->ID() << " t:"<< sender->getTeam()<<"\n";
+		//debug_con << "frontmost subgoal " << m_SubGoals.front()->GetType() << "\n";			
+		//AddGoal_DefendFlag(false);
+		//tempdeac();
+		//debug_con << "frontmost subgoal " <<  m_SubGoals.front()->GetType() << "\n";
 		//debug_con << m_pOwner->ID() << " removeu subgoals?\n";
 		}
 		return true;

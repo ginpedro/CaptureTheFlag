@@ -183,57 +183,57 @@ void Raven_Game::Update()
   
   //notificar bot que mandou o request e o bot escolhido
   //time 1
-  std::list<bbRequest*> accepted1 = BTeam1.getNowRequests();
-  std::list<bbRequest*>::const_iterator a1 = accepted1.begin();
-  for (a1; a1 != accepted1.end(); ++a1)
-  {
-	  if ((*a1)->getStatus() == inprogress)//alguem foi escolhido
-	  {
-		  Raven_Bot* reqowner = (*a1)->getOwner();
-		  Raven_Bot* reqtarget = (*a1)->getBestOffer().sender;
-		  
-		  //notificar quem postou para que pare de tentar postar
-		  void* content1 = reqtarget;
-		  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
-                            SENDER_ID_IRRELEVANT,
-                            reqowner->ID(),
-                            Msg_HDFRequestAccepted,
-                            content1);
-		  //notificar quem recebeu para que comece a fazer o requisitado
-		  void* content2 = reqowner;
-		  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
-                            reqowner->ID(),
-                            reqtarget->ID(),
-                            Msg_HelpDefendFlag,
-                            content2);
-	  }
-  }
-  //time2
-  std::list<bbRequest*> accepted2 = BTeam2.getNowRequests();
-  std::list<bbRequest*>::const_iterator a2 = accepted2.begin();
-  for (a2; a2 != accepted2.end(); ++a2)
-  {
-	  if ((*a2)->getStatus() == inprogress)//alguem foi escolhido
-	  {
-		  Raven_Bot* reqowner = (*a2)->getOwner();
-		  Raven_Bot* reqtarget = (*a2)->getBestOffer().sender;
-		  
-		  //notificar quem postou para que pare de tentar postar
-		  void* content1 = reqtarget;
-		  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
-                            SENDER_ID_IRRELEVANT,
-                            reqowner->ID(),
-                            Msg_HDFRequestAccepted,
-                            content1);
-		  //notificar quem recebeu para que comece a fazer o requisitado
-		  void* content2 = reqowner;
-		  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
-                            reqowner->ID(),
-                            reqtarget->ID(),
-                            Msg_HelpDefendFlag,
-                            content2);
-	  }
-  }
+  //std::list<bbRequest*> accepted1 = BTeam1.getNowRequests();
+  //std::list<bbRequest*>::const_iterator a1 = accepted1.begin();
+  //for (a1; a1 != accepted1.end(); ++a1)
+  //{
+	 // if ((*a1)->getStatus() == inprogress)//alguem foi escolhido
+	 // {
+		//  Raven_Bot* reqowner = (*a1)->getOwner();
+		//  Raven_Bot* reqtarget = (*a1)->getBestOffer().sender;
+		//  
+		//  //notificar quem postou para que pare de tentar postar
+		//  void* content1 = reqtarget;
+		//  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+  //                          SENDER_ID_IRRELEVANT,
+  //                          reqowner->ID(),
+  //                          Msg_HDFRequestAccepted,
+  //                          content1);
+		//  //notificar quem recebeu para que comece a fazer o requisitado
+		//  void* content2 = reqowner;
+		//  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+  //                          reqowner->ID(),
+  //                          reqtarget->ID(),
+  //                          Msg_HelpDefendFlag,
+  //                          content2);
+	 // }
+  //}
+  ////time2
+  //std::list<bbRequest*> accepted2 = BTeam2.getNowRequests();
+  //std::list<bbRequest*>::const_iterator a2 = accepted2.begin();
+  //for (a2; a2 != accepted2.end(); ++a2)
+  //{
+	 // if ((*a2)->getStatus() == inprogress)//alguem foi escolhido
+	 // {
+		//  Raven_Bot* reqowner = (*a2)->getOwner();
+		//  Raven_Bot* reqtarget = (*a2)->getBestOffer().sender;
+		//  
+		//  //notificar quem postou para que pare de tentar postar
+		//  void* content1 = reqtarget;
+		//  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+  //                          SENDER_ID_IRRELEVANT,
+  //                          reqowner->ID(),
+  //                          Msg_HDFRequestAccepted,
+  //                          content1);
+		//  //notificar quem recebeu para que comece a fazer o requisitado
+		//  void* content2 = reqowner;
+		//  Dispatcher->DispatchMsg(SEND_MSG_IMMEDIATELY,
+  //                          reqowner->ID(),
+  //                          reqtarget->ID(),
+  //                          Msg_HelpDefendFlag,
+  //                          content2);
+	 // }
+  //}
 
   BTeam1.Arbitrate();
   BTeam2.Arbitrate();

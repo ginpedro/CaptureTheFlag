@@ -18,3 +18,4 @@ void Request_HelpDefendFlag::calculatePrice(Raven_Bot* pBot, double distFlag,int
 
 	if (b.cost == -1) { setStatus(accepted); }
 }
+
