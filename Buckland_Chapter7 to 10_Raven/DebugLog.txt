@@ -239,6 +239,277 @@ Creating a Spawn Point
 Creating a UNKNOWN OBJECT TYPE
 Creating a UNKNOWN OBJECT TYPE
 maps/trainCTF.map loaded okay
+1330 deletando goal defend flag 
+1332 deletando goal defend flag 
+1334 deletando goal defend flag 
+1336 deletando goal defend flag 
+1330 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1330
+1330 deletando goal defend flag 
+1332 deletando goal defend flag 
+1334 deletando goal defend flag 
+1336 deletando goal defend flag 
+BOT 1331 IS STUCK!!
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+removido um request failed postado por: 1331
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1331 adicionou request, 1 no quadro 
+--request de urgencia 0 no quadro, estado 0
+novos requests disponiveis
+removido um request failed postado por: 1331
+1331 deletando goal defend flag 
+1333 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+i got the flag, sent message to bot 1331 T:2/1
+someone got our flag. 
+76
+i got the flag, sent message to bot 1333 T:2/1
+someone got our flag. 
+97
+i got the flag, sent message to bot 1335 T:2/1
+someone got our flag. 
+67
+i got the flag, sent message to bot 1337 T:2/1
+someone got our flag. 
+98
+1331 deletando goal defend flag 
+1335 deletando goal defend flag 
+1337 deletando goal defend flag 
+1333 deletando goal defend flag 
+BOT 1334 IS STUCK!!
+1333 deletando goal defend flag 
 deleting raven bot (id = 1330)
 deleting raven bot (id = 1331)
 deleting raven bot (id = 1332)

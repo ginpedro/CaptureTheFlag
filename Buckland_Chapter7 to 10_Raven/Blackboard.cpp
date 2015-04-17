@@ -189,6 +189,8 @@ void Blackboard::Arbitrate()
 {
 
 	double DefFlag = 0.25;
+	double GFlag = 0.2;
+	double Explo = 0.4;
 
 	Vector2D flagPos = pWorld->GetMap()->GetFlagpoint(Team);
 	Vector2D eFlagPos;
@@ -214,9 +216,13 @@ void Blackboard::Arbitrate()
 	spDefendZone.radius /= 2;
 
 	int numDefenders = 0;
+	int numAttackers = 0;
 	for (std::list<Raven_Bot*>::iterator defIt = bots.begin(); defIt != bots.end(); ++defIt) {
 		if (regionContains(spDefendZone,(*defIt)->Pos())) {
 			numDefenders++;
+		}
+		if (regionContains(eflagdangerzone,(*defIt)->Pos())) {
+			numAttackers++;
 		}
 	}
 
@@ -236,21 +242,42 @@ void Blackboard::Arbitrate()
 			bool isNearEFlag = regionContains(eflagdangerzone,(*it)->Pos());
 			double dist = Vec2DDistance((*it)->Pos(), eFlagPos);
 
-			if (isNearFlag) {
-				DefFlag += (numDangerEnemy/max(1,numDefenders))*0.1 + min(0.25, ((*it)->Health())*0.005);
-			}
-			else if (isNearEFlag) {
-				DefFlag = (1 - (MostDangerDist - dist)/eflagdangerzone.radius - min(0.25, ((*it)->Health())*0.005))/2;
-			}
+			//if (isNearFlag) {
+				DefFlag += (numDangerEnemy-numDefenders)*0.08 + min(0.25, ((*it)->Health())*0.004) + 1/MostDangerDist;
+			//}
+			//else if (isNearEFlag) {
+				GFlag += 10/dist + min(0.25, ((*it)->Health())*0.004) - 0.05*numAttackers;
+			//}
+				
+			DefFlag = DefFlag * 0.8;
+			GFlag = GFlag * 0.8;
 
 			if (DefFlag < 0) {DefFlag = 0;}
 			else if (DefFlag > 1) {DefFlag = 1;}
+			if (GFlag < 0) {GFlag = 0;}
+			else if (GFlag > 1) {GFlag = 1;}
 
-			if (DefFlag > 0.5) {
-				(*it)->GetBrain()->AddGoal_DefendFlag(true);
+			
+
+			//debug_con << (*it)->ID() << ": " << DefFlag << ", " << GFlag << "\n";
+			
+			if (DefFlag > GFlag) {
+				if (DefFlag < Explo)
+				{
+					(*it)->GetBrain()->AddGoal_Explore();
+				}else
+				{
+					(*it)->GetBrain()->AddGoal_DefendFlag(true);
+				}
 			}
 			else {
-				(*it)->GetBrain()->AddGoal_GetFlag();
+				if (GFlag < Explo)
+				{
+					(*it)->GetBrain()->AddGoal_Explore();
+				}else
+				{
+					(*it)->GetBrain()->AddGoal_GetFlag();
+				}
 			}
 
 		}
