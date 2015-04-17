@@ -144,7 +144,7 @@ void Raven_Bot::Update()
     //appraise and arbitrate between all possible high level goals
     if (m_pGoalArbitrationRegulator->isReady())
     {
-       m_pBrain->Arbitrate(); 
+       //m_pBrain->Arbitrate(); 
     }
 
     //update the sensory memory with any visual stimulus
@@ -262,7 +262,7 @@ bool Raven_Bot::HandleMessage(const Telegram& msg)
 						  Request_HelpDefendFlag* rdf = static_cast<Request_HelpDefendFlag*>(*it);
 						  if (rdf->getNumRec() == -1) { rdf->setNumRec(0); }
 						  //calcular distancia para a bandeira
-						  rdf->calculatePrice(this,100,Health());//substituir o 100 pela distancia
+						  //rdf->calculatePrice(this,100,Health());//substituir o 100 pela distancia
 					  }
 					  break;
 				  default:break;

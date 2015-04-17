@@ -14,7 +14,7 @@ enum {help_defend_flag, help_capture_flag};
 
 enum {now, urgent, please, ifyoucan};
 
-enum {unaccepted, inprogress, done, /*failed = -1*/};
+enum {unaccepted, accepted, inprogress, done, failed = -1};
 
 class bbRequest
 {

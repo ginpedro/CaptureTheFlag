@@ -7,6 +7,7 @@
 Blackboard::Blackboard()
 {
 	newreqAvaliable = false;	
+	toErase = 0;
 }
 
 void Blackboard::SetConf(int team, Raven_Game* world)
@@ -61,7 +62,7 @@ void Blackboard::SetConf(int team, Raven_Game* world)
 void Blackboard::postRequest(bbRequest* r) {
 	reqList.push_back(r);
 	newreqAvaliable = true;
-	debug_con << "adicionado request, " << reqList.size() << " no quadro \n";
+	debug_con << r->getOwner()->ID() << " adicionou request, " << reqList.size() << " no quadro \n";
 }
 
 std::list<bbRequest*> Blackboard::getNowRequests() {
@@ -98,13 +99,21 @@ void Blackboard::Update()
 	bool newreqa = false;
 	if (!reqList.empty())
 	{
-		for (std::list<bbRequest*>::iterator it = reqList.begin(); it != reqList.end(); ++it) {
-			//if ((*it)->getStatus() == failed)
-			//{//REMOVE NAO ESTA DANDO CERTO
-			//	//reqList.remove(*it);
-			//	//debug_con << "removido request, " << reqList.size() << " no quadro \n";
-			//}
-			if ((*it)->getUrgency() != now /*&& (*it)->getStatus() != failed*/)
+		//Apagar requests que falharam
+		for (int i = toErase; i > 0; i--)
+		{
+			std::list<bbRequest*>::iterator ita = reqList.begin();
+			while ((*ita)->getStatus() != failed) { ++ita; }
+			bbRequest* toEr = *ita;
+			debug_con << "removido um request failed postado por: " << toEr->getOwner()->ID() << "\n" ;
+			reqList.remove(toEr);
+		}
+		toErase = 0;			
+
+		//Atualizar os que estao em aberto
+		for (std::list<bbRequest*>::iterator it = reqList.begin(); it != reqList.end(); ++it) 
+		{			
+			if ((*it)->getUrgency() != now)
 			{
 				(*it)->setUrgency((*it)->getUrgency()-1);
 				debug_con << "--request de urgencia " << (*it)->getUrgency() << " no quadro, estado "<< (*it)->getStatus() << "\n";
@@ -114,16 +123,15 @@ void Blackboard::Update()
 				}
 			}
 			else
-			{
-				if (((*it)->getBestOffer().cost != -1) && ((*it)->getStatus() == unaccepted)/* && ((*it)->getUrgency() == now)*/)
+			{//urgency == now
+				if ((*it)->getStatus() == accepted)
 				{//se alguem ja ofereceu os servicos e o prazo esta no limite, pegue o que estiver registrado
 					(*it)->setStatus(inprogress);	
 					debug_con << "--request: custo " << (*it)->getBestOffer().cost << " no quadro, estado "<< (*it)->getStatus() << "\n";
 				}else
 				{//se ninguem aceitou, marque como falha <--- remover
-					//(*it)->setStatus(failed);
-					//reqList.erase(it);
-					//TODO: MARCAR PARA REMOVER
+					(*it)->setStatus(failed);
+					toErase++;
 				}
 				
 			}
