@@ -138,8 +138,22 @@ void Blackboard::Update()
 			{//urgency == now
 				if ((*it)->getStatus() == accepted)
 				{//se alguem ja ofereceu os servicos e o prazo esta no limite, pegue o que estiver registrado
-					(*it)->setStatus(inprogress);	
+					(*it)->setStatus(inprogress);
 					debug_con << "--request: custo " << (*it)->getBestOffer().cost << " no quadro, estado "<< (*it)->getStatus() << "\n";
+
+					Raven_Bot* cBot = (*it)->getBestOffer().sender;
+					cBot->GetBrain()->AcepptRequest();
+
+					switch ((*it)->getType()) {
+						case help_defend_flag:
+							cBot->GetBrain()->AddGoal_DefendFlag(false);
+							break;
+						case help_capture_flag:
+							cBot->GetBrain()->AddGoal_GetFlag();
+							break;
+						default: {;}
+					}
+
 				}else
 				{//se ninguem aceitou, marque como falha <--- remover
 					(*it)->setStatus(failed);
@@ -182,29 +196,17 @@ void Blackboard::Arbitrate()
 		//	
 		//}
 
-		/* CALCULATE DEFFEND FLAG */
-
 		if (!(*it)->GetBrain()->DoingRequest()) {
-			std::list<bbRequest*> NL = getNowRequests();
-			for (std::list<bbRequest*>::iterator reqit = NL.begin(); reqit != NL.end(); ++reqit) {
-				if ((*reqit)->getBestOffer().sender == (*it)) {
-					(*it)->GetBrain()->AcepptRequest();
-					switch ((*reqit)->getType()) {
-						case help_defend_flag:
-							(*it)->GetBrain()->AddGoal_DefendFlag(false);
-							break;
-						case help_capture_flag:
-							(*it)->GetBrain()->AddGoal_GetFlag();
-							break;
-						default: {;}
-					}
-					break;
-				}
-			}
+			//realizar o calculo dos goals evaluators aqui
 
-			if (!(*it)->GetBrain()->DoingRequest()) {
-				//realizar o calculo dos goals evaluators aqui
-			}
+			/* CALCULATE DEFFEND FLAG */
+
+			Vector2D flagPos = (*it)->GetWorld()->GetMap()->GetFlagpoint((*it)->getTeam());
+
+			double dist = Vec2DDistance((*it)->Pos(), flagPos);
+
+			double DangerDist = 300; //mudar para valor oferecido pela flag
+
 
 		}
 	}
