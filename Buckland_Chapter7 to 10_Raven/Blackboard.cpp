@@ -2,7 +2,7 @@
 #include "../Common/Debug/DebugConsole.h"
 
 #include "Raven_Game.h"
-
+#include "goals/Goal_Think.h"
 
 Blackboard::Blackboard()
 {
@@ -99,11 +99,11 @@ void Blackboard::Update()
 	bool newreqa = false;
 	if (!reqList.empty())
 	{
-		//Apagar requests que falharam
+		//Apagar requests que falharam ou completaram
 		for (int i = toErase; i > 0; i--)
 		{
 			std::list<bbRequest*>::iterator ita = reqList.begin();
-			while ((*ita)->getStatus() != failed) { ++ita; }
+			while (((*ita)->getStatus() != failed) || ((*ita)->getStatus() != done)){ ++ita; }
 			bbRequest* toEr = *ita;
 			debug_con << "removido um request failed postado por: " << toEr->getOwner()->ID() << "\n" ;
 			reqList.remove(toEr);
@@ -154,11 +154,10 @@ bool Blackboard::notPresent(int reqType)
 }
 
 void Blackboard::Arbitrate()
-{
-	
+{	
 	for (std::list<Raven_Bot*>::const_iterator it = bots.begin(); it != bots.end(); ++it)
 	{
-		
+		(*it)->GetBrain()->AddGoal_GetFlag();
 	}
 	//pegar codigo dos goal evaluators (que serao usados) e adicionar outros calculos
 	//calcular o valor de desirability de um goal para um bot, para todos os bots
