@@ -103,7 +103,7 @@ void Blackboard::Update()
 		for (int i = toErase; i > 0; i--)
 		{
 			std::list<bbRequest*>::iterator ita = reqList.begin();
-			while (((*ita)->getStatus() != failed) || ((*ita)->getStatus() != done)){ ++ita; }
+			while (((*ita)->getStatus() != failed) && ((*ita)->getStatus() != done)){ ++ita; }
 			bbRequest* toEr = *ita;
 			debug_con << "removido um request failed postado por: " << toEr->getOwner()->ID() << "\n" ;
 			reqList.remove(toEr);
