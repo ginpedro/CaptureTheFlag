@@ -26,6 +26,7 @@ void Blackboard::SetConf(int team, Raven_Game* world)
 		}
 	}
 	std::list<rectMapRegion> reg = world->GetMap()->getRegions();
+	std::list<circleMapRegion> reg2 = world->GetMap()->getDZones();
 	int eteam;
 	if (team == 1) {eteam = 2;} else {eteam = 1;}
 	Vector2D basepoint = world->GetMap()->GetTeamSpawnpoint(team);
@@ -56,7 +57,17 @@ void Blackboard::SetConf(int team, Raven_Game* world)
 	//	//if (regionContains(*it,Vector2D(base.x0+1,) {side = *it;}
 	//	
 	//}
-
+	for (std::list<circleMapRegion>::const_iterator it = reg2.begin(); it != reg2.end(); ++it)
+	{
+		if (regionContains(*it,flagpoint))
+		{
+			flagdangerzone = *it;//regiao de perigo da flag
+		}
+		if (regionContains(*it,eflagpoint))
+		{
+			eflagdangerzone = *it;//regiao de perigo da flag inimiga
+		}
+	}
 
 }
 

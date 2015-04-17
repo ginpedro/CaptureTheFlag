@@ -79,6 +79,10 @@ int Goal_DefendFlag::Process()
     //process the subgoals
     m_iStatus = ProcessSubgoals();
   }
+  if (m_iStatus == completed)
+  {
+	//Chamar funcao do bot que marque que ele terminou o request
+  }
 
   return m_iStatus;
 }

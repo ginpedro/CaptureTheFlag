@@ -31,9 +31,9 @@ void Trigger_Flagspot::Render()
 {
   if (isActive())
   {
-    gdi->BlackPen();
-	gdi->HollowBrush();
-	gdi->Circle(Pos(),dangerAreaRadius);
+    //gdi->BlackPen();
+	//gdi->HollowBrush();
+	//gdi->Circle(Pos(),dangerAreaRadius);
 	if (m_iOwnerTeam == 1) {gdi->RedBrush();}
 	if (m_iOwnerTeam == 2) {gdi->BlueBrush();}
     const int sz = 5;

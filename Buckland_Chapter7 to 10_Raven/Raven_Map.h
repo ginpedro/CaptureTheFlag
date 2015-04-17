@@ -33,6 +33,11 @@ struct rectMapRegion
 	int x0,y0,xsize,ysize;
 	Vector2D center;
 };
+struct circleMapRegion
+{
+	double radius;
+	Vector2D center;
+};
 
 class Raven_Map
 {
@@ -47,6 +52,7 @@ public:
   
 private:
 	std::list<rectMapRegion> regions;
+	std::list<circleMapRegion> dangerzones;
 
   //the walls that comprise the current map's architecture. 
   std::vector<Wall2D*>                m_Walls;
@@ -166,7 +172,7 @@ public:
 	}
   }
   std::list<rectMapRegion> getRegions() { return regions; };
-  
+  std::list<circleMapRegion> getDZones() { return dangerzones; };
 };
 
 

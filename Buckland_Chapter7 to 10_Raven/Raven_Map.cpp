@@ -182,6 +182,11 @@ void Raven_Map::AddFlag(std::ifstream& in)
   if (fs->GetTeamOwner() == 1){ team1flag = fs->Pos(); };
   if (fs->GetTeamOwner() == 2){ team2flag = fs->Pos(); };
 
+  circleMapRegion cir;
+  cir.center = fs->Pos();
+  cir.radius = fs->getDangerZone();
+  dangerzones.push_back(cir);
+
   //register the entity 
   EntityMgr->RegisterEntity(fs);
 }
@@ -465,5 +470,11 @@ void Raven_Map::Render()
   {
 	  gdi->Circle((*it).center,5);
 	  gdi->Rect((*it).x0,(*it).y0,(*it).xsize,(*it).ysize);
+  }
+
+  std::list<circleMapRegion>::const_iterator it2 = dangerzones.begin();
+  for (it2; it2 != dangerzones.end(); ++it2)
+  {
+	  gdi->Circle((*it2).center,(*it2).radius);
   }
 }

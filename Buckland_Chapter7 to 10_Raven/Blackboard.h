@@ -17,9 +17,11 @@ private:
 	std::list<Raven_Bot*> ebots;
 	rectMapRegion base;
 	rectMapRegion flag;
+	circleMapRegion flagdangerzone;
 	//rectMapRegion side;
 	rectMapRegion ebase;
 	rectMapRegion eflag;
+	circleMapRegion eflagdangerzone;
 	//rectMapRegion eside;
 	int toErase;
 
@@ -39,6 +41,16 @@ public:
 	bool regionContains(rectMapRegion reg, Vector2D p)
 	{
 		  if ((p.x > reg.x0) && (p.y > reg.y0) && (p.x < (reg.x0+reg.xsize)) && (p.y < (reg.y0+reg.ysize)))
+		  {
+			return true;
+		  }else
+		  {
+			return false;
+		  }
+	}
+	bool regionContains(circleMapRegion reg, Vector2D p)
+	{
+		if (abs(Vec2DDistance(reg.center,p)) < reg.radius)
 		  {
 			return true;
 		  }else
