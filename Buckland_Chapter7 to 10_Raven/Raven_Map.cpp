@@ -465,12 +465,12 @@ void Raven_Map::Render()
   gdi->HollowBrush();
   gdi->RedPen();
 
-  std::list<rectMapRegion>::const_iterator it = regions.begin();
+ /* std::list<rectMapRegion>::const_iterator it = regions.begin();
   for (it; it != regions.end();++it)
   {
 	  gdi->Circle((*it).center,5);
 	  gdi->Rect((*it).x0,(*it).y0,(*it).xsize,(*it).ysize);
-  }
+  }*/
 
   std::list<circleMapRegion>::const_iterator it2 = dangerzones.begin();
   for (it2; it2 != dangerzones.end(); ++it2)

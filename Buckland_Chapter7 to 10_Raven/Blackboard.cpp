@@ -120,7 +120,7 @@ void Blackboard::Update()
 			std::list<bbRequest*>::iterator ita = reqList.begin();
 			while (((*ita)->getStatus() != failed) && ((*ita)->getStatus() != done)){ ++ita; }
 			bbRequest* toEr = *ita;
-			debug_con << "removido um request failed postado por: " << toEr->getOwner()->ID() << "\n" ;
+			debug_con << "removido um request postado por: " << toEr->getOwner()->ID() << "\n" ;
 			reqList.remove(toEr);
 		}
 		toErase = 0;			
@@ -158,15 +158,23 @@ void Blackboard::Update()
 					}
 
 				}else
-				{//se ninguem aceitou, marque como falha <--- remover
-					(*it)->setStatus(failed);
-					toErase++;
-				}//se ja completou, remover
-				if ((*it)->getStatus() == done)
 				{
-					toErase++;
-				}				
-			}
+					if ((*it)->getStatus() == inprogress)
+					{
+						bool valid = (*it)->verifyCompletion();//verificar se o request pode ser marcado como done
+						if (valid)
+						{
+							(*it)->setStatus(done);
+							toErase++;
+							debug_con << "request done by " << (*it)->getBestOffer().sender->ID() << "\n";
+						}
+					}else
+					{//se ninguem aceitou, marque como falha <--- remover
+						(*it)->setStatus(failed);
+						toErase++;
+					}
+				}			
+			}			
 		}	
 	}
 	newreqAvaliable = newreqa;

@@ -1,4 +1,5 @@
 #include "Request_HelpDefendFlag.h"
+#include "goals/Goal_Think.h"
 
 Request_HelpDefendFlag::Request_HelpDefendFlag(Raven_Bot* owner):bbRequest(owner)
 {
@@ -18,3 +19,4 @@ void Request_HelpDefendFlag::calculatePrice(Raven_Bot* pBot, double distFlag,int
 
 	if (b.cost == -1) { setStatus(accepted); }
 }
+
