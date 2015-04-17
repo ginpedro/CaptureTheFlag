@@ -132,8 +132,11 @@ void Blackboard::Update()
 				{//se ninguem aceitou, marque como falha <--- remover
 					(*it)->setStatus(failed);
 					toErase++;
-				}
-				
+				}//se ja completou, remover
+				if ((*it)->getStatus() == done)
+				{
+					toErase++;
+				}				
 			}
 		}	
 	}
